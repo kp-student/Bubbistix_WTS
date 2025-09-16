@@ -38,6 +38,27 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Outfit Light */
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Light.otf") format("opentype");
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+/* Outfit Regular */
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Regular.otf") format("opentype");
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+/* Outfit Medium */
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/Outfit-Medium.otf") format("opentype");
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
