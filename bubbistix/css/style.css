@@ -39,27 +39,6 @@
   font-weight: normal;
   font-style: normal;
 }
-/* Outfit Light */
-@font-face {
-  font-family: "Outfit";
-  src: url("../fonts/Outfit-Light.otf") format("opentype");
-  font-weight: 300; /* Light */
-  font-style: normal;
-}
-/* Outfit Regular */
-@font-face {
-  font-family: "Outfit";
-  src: url("../fonts/Outfit-Regular.otf") format("opentype");
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-/* Outfit Medium */
-@font-face {
-  font-family: "Outfit";
-  src: url("../fonts/Outfit-Medium.otf") format("opentype");
-  font-weight: 500; /* Medium */
-  font-style: normal;
-}
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -70,12 +49,12 @@ body {
 
 h1 {
   font-family: 'Adelia-Font';
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--primary-pink);
 }
 
 h2, h3 {
-  font-family: 'Adelia-Font';
+  font-family: 'CuteSunrise';
   color: var(--primary-pink);
 }
 
@@ -87,10 +66,8 @@ header {
 }
 
 .logo {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-family: 'Adelia-Font';
-  color: var(--primary-pink);
-  margin-bottom: 1rem;
+  height: 120px;
+  width: auto;
 }
 
 .nav-links {
@@ -103,8 +80,9 @@ header {
 }
 
 .nav-links a {
-  font-family: 'Milkyway-Font', sans-serif;
+  font-family: 'Cute-sunrise''sans-serif';
   font-size: 1.5rem;
+  font-weight: bold;
   color: var(--bubblegum-pink);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -117,30 +95,26 @@ header {
   color: var(--leafy-green);
 }
 
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
 /* Hero */
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   text-align: center;
-  height: 25rem;
+  height: 35rem;
+  padding-bottom: 4rem;
 
-  background: linear-gradient(to bottom, var(--powder-pink), transparent),
-              url('../images/hero_bg.jpg') no-repeat center center;
+  background: linear-gradient(to bottom, rgba(255, 192, 203, 0.3), transparent),
+              url('../images/Welcome-Image/Home-Welcome Page.png') no-repeat center center;
   background-size: cover;
 }
-
-.hero h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
 
 
 /* ====== Squishy Button ====== */
@@ -204,24 +178,26 @@ header {
 
 /* Collections */
 .collections {
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
   background: white;
 }
 
 .collection-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 65rem;
   justify-items: center;
 }
 
 .collection-card {
   background: #fff;
-  padding: 2rem;
-  border-radius: 1.25rem;
-  min-width: 11.25rem;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 20rem;
   text-align: center;
   font-weight: bold;
   box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05);
