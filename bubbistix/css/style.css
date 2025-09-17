@@ -40,6 +40,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Cute-Sunrise';
+  src: url('../fonts/Cute-Sunrise.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: white;
@@ -54,7 +61,7 @@ h1 {
 }
 
 h2, h3 {
-  font-family: 'CuteSunrise';
+  font-family: 'Cute-Sunrise';
   color: var(--primary-pink);
 }
 
@@ -80,7 +87,7 @@ header {
 }
 
 .nav-links a {
-  font-family: 'Cute-sunrise''sans-serif';
+  font-family: 'Cute-Sunrise';
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--bubblegum-pink);
@@ -278,7 +285,7 @@ footer {
 }
 
 .footer-subscribe button:hover {
-  background: #ff3f89;
+  background: var(--primary-pink);
 }
 
 /* Footer Navigation */
@@ -384,15 +391,20 @@ footer {
 
 }
 .team-header {
-  font-size: 2rem;
-  font-weight: bold;
+  font-family: 'Sugar-Flare'; 
+  font-size: 3rem;
   color: var(--powder-pink);
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .team-subtitle {
-  font-size: 1rem;
-  font-weight: bold;
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
   color: var(--powder-pink);
+  letter-spacing: 2px;
 }
 
 .team-grid {
@@ -434,12 +446,17 @@ footer {
   margin: 3rem auto;
   text-align: center;
   color: var(--leafy-green);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Outfit', sans-serif;
 }
 
 .contact h2 {
-  font-size: 2.4rem;
-  margin-bottom: 0.5rem;
+  font-size: 3.5rem;
+  font-family: 'Sugar-Flare';
+  text-align: center;
+  color: var(--leafy-green);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .contact p {
