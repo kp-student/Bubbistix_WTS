@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubbistix | Create Account</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/fav_smile.png">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <img src="images/logo/image.png" alt="BUBBiSTiX" class="logo">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Stickers</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="registration.html"><img src="images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
+        <li><a href="add-to-cart.html"><img src="images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
+      </ul>
+    </nav>
+  </header>
+
+<!-- Create Account -->
+<main class="registration-main">
+  <div class="login-container">
+    <h1 class="login-title">Create Account</h1>
+    
+    <form class="login-form" id="createAccountForm">
+      <div class="input-group">
+        <input type="text" id="username" name="username" placeholder="Username" required>
+      </div>
+      
+      <div class="input-group">
+        <input type="text" id="fullname" name="fullname" placeholder="First & Last Name" required>
+      </div>
+      
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Email" required>
+      </div>
+      
+      <div class="input-group">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      
+      <button type="submit" class="login-btn">Create</button>
+    </form>
+  </div>
+
+  <!-- Success Popup -->
+  <div id="successPopup" class="success-popup" style="display: none;">
+    <div class="success-content">
+      <h2 class="success-message">Account successfully created! Please sign in <3</h2>
+      <img src="images/strawberry1.png" alt="Strawberry" class="success-image">
+      <button class="login-btn success-btn" onclick="goToLogin()">Sign In</button>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+
+<footer>
+  <div class="footer-container">
+
+    <!-- Mailing List -->
+    <div class="footer-subscribe">
+      <p>Join our mailing list to get discounts, free gifts and exclusive news! ✨</p>
+      <form>
+        <input type="email" placeholder="Email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- Footer Links -->
+    <div class="footer-links">
+      <a href="shop.html">Stickers</a>
+      <a href="about.html">About Us</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 Bubbistix. All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+  <script>
+    // Handle form submission
+    document.getElementById('createAccountForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form from actually submitting
+      
+      // Show success popup
+      document.getElementById('successPopup').style.display = 'flex';
+    });
+
+    // Function to go to login page
+    function goToLogin() {
+      window.location.href = 'registration.html';
+    }
+  </script>
+</body>
+</html>

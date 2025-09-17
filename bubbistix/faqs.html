@@ -12,11 +12,11 @@
 
   <header>
     <nav class="navbar">
-      <h1 class="logo">BUBBiSTiX</h1>
+      <img src="images/logo/image.png" alt="BUBBiSTiX" class="logo">
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Stickers</a></li>
         <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Stickers</a></li>
         <li><a href="faqs.html" class="active">FAQs</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="registration.html"><img src="images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
@@ -26,7 +26,69 @@
   </header>
 
 
-<!-- INSERT HTML CODE HERE -->
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="faq-container">
+      <h1 class="faq-title">Frequently Asked Questions</h1>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>📦 Shipping & Delivery Times</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <h4>Processing Times</h4>
+          <p>Please allow 3-5 days for your order to be processed before being shipped out. We're a small business that's currently juggling all parts of this business. I really appreciate your understanding and patience!</p>
+          
+          <h4>My order still hasn't arrived, what do I do?</h4>
+          <p>This can occasionally happen with letter mail. Don't worry! If you have waited past the estimated shipping time we'll try to make things right. Please reach out to us via our 'contact' page with your order number.</p>
+          
+          <h4>Wrong Address/Address Change</h4>
+          <p>Please double-check when filling out your shipping information. If you have submitted the wrong information please contact us before the order is processed! Once it has been processed there can't be any changes. No refunds will be issued for orders sent to the wrong address.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🌍 Do you offer worldwide shipping?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sorry, we currently only ship nationwide within the Philippines. We’re working on expanding our shipping options in the future!</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>↩️ Refund Policy & Returns</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>As a small business, we don’t offer refunds. Due to the nature of our products (stickers), we have a limited return policy. If you experience any issues with your order, please contact us within 7 days of receiving it, and we’ll do our best to find a suitable solution.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🎨 Do you accept commissions/custom requests?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes! We love creating custom designs. Please reach out to us through our contact page with your ideas, and we'll discuss pricing and timeline for your custom sticker request.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🏢 Wholesale Inquiry</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We offer wholesale pricing for bulk orders. Please contact us directly with your wholesale inquiry, including the quantity you're interested in and your business information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 <!-- Footer -->
@@ -63,4 +125,29 @@
 </footer>
 
 </body>
+
+<script>
+// FAQ Dropdown Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function() {
+      const faqItem = this.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Toggle current item
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+});
+</script>
+
 </html>

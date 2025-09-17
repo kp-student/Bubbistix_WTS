@@ -42,7 +42,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: var(--powder-pink);
+  background: white;
   color: #333;
   line-height: 1.6;
 }
@@ -96,9 +96,21 @@ header {
 }
 
 .nav-icon {
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   vertical-align: middle;
+  font-weight: bold;
+  stroke-width: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.05);
+}
+
+.nav-links a.active .nav-icon,
+.nav-icon:active {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(18%) saturate(1234%) hue-rotate(120deg) brightness(95%) contrast(89%);
 }
 
 /* Hero */
@@ -328,6 +340,7 @@ footer {
 /* About Section */
 .about {
   padding: 3rem 2rem;
+  background: white;
 }
 
 .about, .team, .footer-container {
@@ -480,5 +493,283 @@ button {
 
 button:hover {
   background-color: var(--dark-green);
+}
+
+/****** FAQ Section ******/
+
+.faq-section {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faq-container {
+  width: 100%;
+}
+
+.faq-title {
+  font-size: 3.5rem;
+  font-family: 'Sugar-Flare', cursive;
+  text-align: center;
+  color: var(--leafy-green);
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: var(--leafy-green);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.faq-question:hover {
+  background-color: #e9ecef;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--leafy-green);
+  transition: transform 0.3s;
+}
+
+.faq-answer {
+  padding: 1.5rem;
+  background-color: white;
+  color: #333;
+  line-height: 1.6;
+  display: none;
+}
+
+.faq-answer h4 {
+  color: var(--leafy-green);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.faq-answer p {
+  margin-bottom: 1rem;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Active state for opened FAQ */
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+/* Registration/Login Page Styles */
+.registration-main {
+  position: relative;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.registration-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/background_signup.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-title {
+  color: #E6536D;
+  font-family: 'Adelia-Font', serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #49705B;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #E6536D;
+}
+
+.input-group input::placeholder {
+  color: #999;
+}
+
+.forgot-password {
+  text-align: left;
+  margin-top: -0.5rem;
+}
+
+.forgot-link {
+  color: #666;
+  font-size: .85rem;
+  text-decoration: underline;
+}
+
+.forgot-link:hover {
+  color: #49705b;
+}
+
+.login-btn {
+  background-color: #49705B;
+  color: white;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 60%;
+}
+
+.login-btn:hover {
+  background-color: #3a5a47;
+  transform: translateY(-2px);
+}
+
+.create-link {
+  color: #666;
+  font-size: .85rem;
+  text-decoration: underline;
+}
+
+.create-link:hover {
+  color: #49705b;
+}
+
+/* Success Popup Styles */
+.success-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.success-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px solid #E6536D;
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.success-message {
+  color: #E6536D;
+  font-family: 'Poppins', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.success-image {
+  width: 300px; 
+  height: 300px;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.strawberry-container {
+  display: flex;                                          
+  justify-content: center;     
+  margin: 1.5rem;  
+}
+
+.success-btn {
+  margin-top: 1rem;
+  width: auto;
+  padding: 0.8rem 2rem;
+}
+
+/* Reset Password Success Message */
+.reset-success-message {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reset-success-message p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Reset Password Subtitle */
+.reset-subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
