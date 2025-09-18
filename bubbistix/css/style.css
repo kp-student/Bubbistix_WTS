@@ -55,7 +55,7 @@ body {
 }
 
 h1 {
-  font-family: 'Adelia-Font';
+  font-family: 'Cute-Sunrise';
   font-size: 3rem;
   color: var(--primary-pink);
 }
@@ -422,7 +422,7 @@ footer {
   margin-bottom: 1rem;
 }
 .team-member h3 {
-  font-family: 'Milkyway-Font', sans-serif;
+  font-family: 'Cute-Sunrise', sans-serif;
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
