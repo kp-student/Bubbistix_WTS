@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/fav_smile.png">
+  <script src="js/create_account.js" defer></script>
 </head>
 <body>
 
@@ -96,19 +97,5 @@
   </div>
 </footer>
 
-  <script>
-    // Handle form submission
-    document.getElementById('createAccountForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent form from actually submitting
-      
-      // Show success popup
-      document.getElementById('successPopup').style.display = 'flex';
-    });
-
-    // Function to go to login page
-    function goToLogin() {
-      window.location.href = 'registration.html';
-    }
-  </script>
 </body>
 </html>

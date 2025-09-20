@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="images/fav_smile.png">
+  <script src="js/FAQs.js" defer></script>
 </head>
 <body>
 
@@ -128,29 +129,5 @@
 </footer>
 
 </body>
-
-<script>
-// FAQ Dropdown Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', function() {
-      const faqItem = this.parentElement;
-      const isActive = faqItem.classList.contains('active');
-      
-      // Close all other FAQ items
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      // Toggle current item
-      if (!isActive) {
-        faqItem.classList.add('active');
-      }
-    });
-  });
-});
-</script>
 
 </html>

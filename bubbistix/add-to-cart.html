@@ -96,38 +96,4 @@
 </footer>
 
 </body>
-
-<script>
-function updateQuantity(button, change) {
-  const quantityInput = button.parentElement.querySelector('.quantity-input');
-  const currentQuantity = parseInt(quantityInput.value);
-  const newQuantity = Math.max(1, currentQuantity + change);
-  
-  quantityInput.value = newQuantity;
-  
-  // Update the total price for this item
-  const cartItem = button.closest('.cart-item');
-  const itemPrice = 200; // Base price per item
-  const totalPriceElement = cartItem.querySelector('.total-price');
-  const newTotal = itemPrice * newQuantity;
-  
-  totalPriceElement.textContent = `₱ ${newTotal.toFixed(2)} PHP`;
-  
-  // Update the final total
-  updateFinalTotal();
-}
-
-function updateFinalTotal() {
-  let total = 0;
-  const cartItems = document.querySelectorAll('.cart-item');
-  
-  cartItems.forEach(item => {
-    const quantity = parseInt(item.querySelector('.quantity-input').value);
-    const itemPrice = 200; // Base price per item
-    total += itemPrice * quantity;
-  });
-  
-  document.querySelector('.final-total').textContent = `₱ ${total.toFixed(2)} PHP`;
-}
-</script>
 </html>

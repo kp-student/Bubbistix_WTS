@@ -27,9 +27,9 @@ const philippineLocations = {
 
 // Initialize dropdown functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  const islandSelect = document.getElementById('island-group');
-  const regionSelect = document.getElementById('region');
-  const provinceSelect = document.getElementById('province-city');
+  const islandSelect = document.getElementById('island-select');
+  const regionSelect = document.getElementById('region-select');
+  const provinceSelect = document.getElementById('province-select');
 
   // Populate island dropdown
   function populateIslandDropdown() {
