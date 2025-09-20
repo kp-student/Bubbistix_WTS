@@ -59,6 +59,17 @@
       </div>
     </form>
   </div>
+
+  <!-- Success Popup -->
+  <div id="loginSuccessPopup" class="success-popup" style="display: none;">
+    <div class="success-content">
+      <h2 class="success-message">You're now signed in</h2>
+
+      <img src="images/strawberry2.png" alt="Strawberry" class="success-image">
+      <p class="success-redirect">Redirecting to your dashboard...</p>
+      <p class="success-manual">(If the page doesn't redirect, <a href="index.html" class="redirect-link">click here.</a>)</p>
+    </div>
+  </div>
 </main>
 
 
@@ -106,6 +117,19 @@
     if (message === 'reset') {
       document.getElementById('resetMessage').style.display = 'block';
     }
+  });
+
+  // Handle login form submission
+  document.querySelector('.login-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form from actually submitting
+    
+    // Show success popup
+    document.getElementById('loginSuccessPopup').style.display = 'flex';
+    
+    // Auto redirect after 3 seconds
+    setTimeout(function() {
+      window.location.href = 'index.html';
+    }, 3000);
   });
 </script>
 </html>
