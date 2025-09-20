@@ -28,59 +28,38 @@
     </nav>
   </header>
 
+<!-- Main Cart Section -->
 
-<!-- Cart Page -->
-<main class="cart-main">
-  <div class="cart-container">
+ <main class="cart-main">
+  <div class="cart-container" role="main" aria-label="Shopping cart">
     <div class="cart-header">
       <h1 class="cart-title">Your Cart</h1>
       <a href="shop.html" class="continue-shopping">Continue shopping</a>
     </div>
 
-    <div class="cart-content">
-      <div class="cart-items">
-        <div class="cart-item-header">
-          <span class="header-product">Product</span>
-          <span class="header-quantity">Quantity</span>
-          <span class="header-total">Total</span>
-        </div>
-
-        <div class="cart-item">
-          <div class="item-info">
-            <img src="images/stickers/sample.png" alt="Mochi Munches Sticker" class="item-image">
-            <div class="item-details">
-              <h3 class="item-name">Mochi Munches Sticker</h3>
-              <p class="item-price">₱ 200.00 PHP</p>
-            </div>
-          </div>
-          
-          <div class="quantity-controls">
-            <button class="quantity-btn minus" onclick="updateQuantity(this, -1)">-</button>
-            <input type="number" class="quantity-input" value="2" min="1" readonly>
-            <button class="quantity-btn plus" onclick="updateQuantity(this, 1)">+</button>
-          </div>
-          
-          <div class="item-total">
-            <span class="total-price">₱ 400.00 PHP</span>
-          </div>
-        </div>
+    <div class="cart-content" aria-live="polite" aria-relevant="additions removals">
+      <div class="cart-items" id="cart-items">
+        <!-- Cart items inserted here dynamically -->
       </div>
 
       <div class="cart-summary">
         <div class="order-special">
-          <h3>Order Special Transaction</h3>
-          <textarea placeholder="Add special instructions for your order..."></textarea>
+          <h3>Do you have a request?</h3>
+          <textarea placeholder="Add special instructions for your order..." aria-label="Special instructions"></textarea>
         </div>
 
-        <div class="estimated-total">
-          <h3>Estimated total: <span class="final-total">₱ 400.00 PHP</span></h3>
+        <div class="estimated-total" aria-live="polite">
+          <h3>Estimated total: <span class="final-total" aria-atomic="true">₱ 0.00 PHP</span></h3>
           <p class="tax-note">Taxes, discounts and shipping calculated at checkout.</p>
-          <button class="checkout-btn">Check Out</button>
+          <button class="checkout-btn" aria-label="Proceed to checkout">Check Out</button>
         </div>
       </div>
     </div>
   </div>
 </main>
+
+  <!-- External JavaScript for cart logic -->
+  <script src="js/script_cart.js"></script>
 
 
 <!-- Footer -->
