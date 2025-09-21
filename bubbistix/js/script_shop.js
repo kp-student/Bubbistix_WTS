@@ -147,5 +147,23 @@ function addToCart(name, image, price) {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  alert(name + ' has been added to your cart!');
+  showAddToCartPopup(name);
+}
+
+function showAddToCartPopup(productName) {
+  const popup = document.getElementById('add-to-cart-popup');
+  const popupText = document.getElementById('popup-text');
+  
+  popupText.textContent = productName + ' has been added to your cart!';
+  popup.style.display = 'flex';
+  
+  // Auto close after 3 seconds
+  setTimeout(() => {
+    closeAddToCartPopup();
+  }, 3000);
+}
+
+function closeAddToCartPopup() {
+  const popup = document.getElementById('add-to-cart-popup');
+  popup.style.display = 'none';
 }
