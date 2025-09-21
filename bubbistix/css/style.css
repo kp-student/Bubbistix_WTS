@@ -1420,24 +1420,7 @@ button:hover {
   margin: 0;
 }
 
-.pay-now-btn {
-  width: 100%;
-  background: linear-gradient(135deg, var(--primary-pink), var(--bubblegum-pink));
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 25px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pay-now-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(230, 83, 109, 0.3);
-}
+/* Consolidated Pay Now Button Styles */
 
 .order-summary-section {
   background: white;
@@ -1447,22 +1430,6 @@ button:hover {
   height: fit-content;
   position: sticky;
   top: 2rem;
-}
-
-.order-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 1rem;
-}
-
-.order-item-image {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
 }
 
 .order-item-details {
