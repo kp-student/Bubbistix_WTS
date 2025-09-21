@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - Bubbistix</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/fav_smile.png">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <img src="images/logo/image.png" alt="BUBBiSTiX" class="logo">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Stickers</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="registration.html"><img src="images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
+        <li><a href="add-to-cart.html"><img src="images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="checkout-main">
+    <div class="checkout-container">
+      
+      <!-- Left Side - Confirmation Details -->
+      <div class="checkout-left">
+        <!-- Thank You Section -->
+        <div class="thank-you-section">
+          <h1 class="confirmation-title">Thank you for your purchase!</h1>
+          <div class="character-image">
+            <img src="images/strawberry3.png" alt="Strawberry Character" class="strawberry-character">
+          </div>
+          <p class="confirmation-message" id="confirmationMessage">
+            Your order has been placed successfully. A confirmation email has been sent.
+          </p>
+        </div>
+
+        <!-- Delivery Information -->
+        <div class="delivery-section">
+          <h2 class="section-title">Delivery Information</h2>
+          <div class="delivery-details" id="deliveryDetails">
+            <!-- Delivery info will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="payment-section">
+          <h2 class="section-title">Payment Method</h2>
+          <p class="payment-security">All transactions are secure and encrypted.</p>
+          <div class="payment-method" id="paymentDetails">
+            <!-- Payment info will be populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+          <a href="index.html" class="continue-shopping-link">Continue Shopping</a>
+        </div>
+      </div>
+
+      <!-- Right Side - Order Summary -->
+      <div class="checkout-right">
+        <div class="order-summary">
+          <h3 class="section-title">Order Summary</h3>
+          
+          <div id="orderItems">
+            <!-- Order items will be populated by JavaScript -->
+          </div>
+
+          <div class="order-totals">
+            <div class="total-line">
+              <span>Subtotal</span>
+              <span id="subtotal">₱ 0.00</span>
+            </div>
+            <div class="total-line">
+              <span>Shipping</span>
+              <span id="shipping">₱ 50.00</span>
+            </div>
+            <div class="total-line final-total">
+              <span>Total:</span>
+              <span id="total">₱ 0.00</span>
+            </div>
+          </div>
+
+          <div class="estimated-delivery">
+            <p class="delivery-estimate">Estimated delivery: 3-5 business days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/order-confirmation.js"></script>
+
+</body>
+</html>

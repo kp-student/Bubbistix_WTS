@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Bubbistix</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/fav_smile.png">
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <img src="images/logo/image.png" alt="BUBBiSTiX" class="logo">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Stickers</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="registration.html"><img src="images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
+        <li><a href="add-to-cart.html"><img src="images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="checkout-main">
+    <div class="checkout-container">
+      <div class="checkout-left">
+        <form id="checkoutForm">
+          <!-- Contact Section -->
+          <section class="checkout-section">
+            <h2 class="section-title">Contact</h2>
+            <div class="form-group">
+              <input type="email" id="email" placeholder="Email" class="checkout-input" required>
+            </div>
+          </section>
+
+          <!-- Delivery Section -->
+          <section class="checkout-section">
+            <h2 class="section-title">Delivery Address</h2>
+            
+            <!-- Location Dropdowns -->
+            <div class="location-dropdowns">
+              <select id="island-select" class="checkout-select">
+                <option value="">Select Island</option>
+              </select>
+              <select id="region-select" class="checkout-select" disabled>
+                <option value="">Select Region</option>
+              </select>
+              <select id="province-select" class="checkout-select" disabled>
+                <option value="">Select Province</option>
+              </select>
+            </div>
+
+            <!-- Name Fields -->
+            <div class="name-fields">
+              <input type="text" id="firstName" placeholder="First Name" class="checkout-input half-width" required>
+              <input type="text" id="lastName" placeholder="Last Name" class="checkout-input half-width" required>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+              <input type="text" id="address" placeholder="Address" class="checkout-input" required>
+            </div>
+
+            <!-- Postal Code and City -->
+            <div class="postal-city-fields">
+              <input type="text" id="postalCode" placeholder="Postal Code" class="checkout-input half-width" required>
+              <input type="text" id="city" placeholder="City" class="checkout-input half-width" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <input type="tel" id="phone" placeholder="Phone (optional)" class="checkout-input">
+            </div>
+          </section>
+
+          <!-- Payment Section -->
+          <section class="checkout-section">
+            <h2 class="section-title">Payment</h2>
+            <p class="payment-security">All transactions are secure and encrypted.</p>
+            
+            <div class="payment-method">
+              <div class="payment-option selected">
+                <input type="radio" id="credit-card" name="payment" value="credit_card" checked>
+                <label for="credit-card">Credit Card</label>
+              </div>
+              <div class="payment-option">
+                <input type="radio" id="cash-on-delivery" name="payment" value="cash_on_delivery">
+                <label for="cash-on-delivery">Cash on Delivery</label>
+              </div>
+            </div>
+            
+            <div class="credit-card-fields" id="credit-card-fields">
+              <input type="text" id="cardNumber" placeholder="Card Number" class="checkout-input">
+              
+              <div class="card-details">
+                <input type="text" id="expiryDate" placeholder="Expiration Date (MM/YY)" class="checkout-input half-width">
+                <input type="text" id="cvv" placeholder="CVV" class="checkout-input half-width">
+              </div>
+              
+              <input type="text" id="cardName" placeholder="Name" class="checkout-input">
+            </div>
+
+            <button type="button" id="payNowBtn" class="pay-now-btn">Pay Now</button>
+          </section>
+        </form>
+      </div>
+
+      <div class="checkout-right">
+        <div class="order-summary">
+          <h3 class="section-title">Order Summary</h3>
+          
+          <div id="orderItems">
+            <!-- Cart items will be loaded here -->
+          </div>
+
+          <div class="discount-section">
+            <input type="text" id="discountCode" placeholder="Discount code" class="discount-input">
+            <button type="button" id="applyDiscount" class="apply-btn">Apply</button>
+          </div>
+
+          <div class="order-totals">
+            <div class="total-line">
+              <span>Subtotal</span>
+              <span id="subtotal">₱ 0.00</span>
+            </div>
+            <div class="total-line">
+              <span>Shipping</span>
+              <span>Enter shipping address</span>
+            </div>
+            <div class="total-line final-total">
+              <span>Total:</span>
+              <span id="total">PHP ₱ 0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <!-- Mailing List -->
+      <div class="footer-subscribe">
+        <p>Join our mailing list to get discounts, free gifts and exclusive news! ✨</p>
+        <form>
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="footer-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="shop.html">Stickers</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-copy">
+        <p>Copyright © Bubbistix 2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/location-dropdown.js"></script>
+  <script src="js/checkout.js"></script>
+
+</body>
+</html>
