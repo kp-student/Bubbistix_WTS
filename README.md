@@ -7,7 +7,8 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 
 ## Table of Contents
 - [About](#about)  
-- [Features](#features)  
+- [Features](#features)
+- [Project Structure](#project-structure)
 - [Installation](#installation)  
 - [Usage](#usage)  
 - [Contributing](#contributing)  
@@ -25,12 +26,43 @@ This repository contains the **front-end HTML, CSS, and assets** for the website
 
 ## Features
 
-- 🌈 Responsive and eye-catching hero section with those irresistible squishy buttons  
-- 🔄 Reusable, playful `.squishy-btn` component making button magic everywhere  
-- 📝 Simple and sleek contact page for your messages to sparkle through  
-- 💅 Clean, easy-to-extend CSS and organized HTML structure for smooth customization
+- 🛒 **Interactive Shop Gallery:**  
+  Browse, search, and sort sticker sets with smooth filtering and category navigation.
+
+- 🛍️ **Add to Cart Functionality:**  
+  Instantly add stickers to your cart and manage quantities with a user-friendly interface.
+
+- 📦 **Cart & Checkout Pages:**  
+  View, update, and remove items from your cart, then proceed to a simple checkout flow.
+
+- 🌈 **Responsive Design:**  
+  Enjoy a seamless experience on mobile, tablet, and desktop devices.
+
+- 📝 **Contact & Account Pages:**  
+  Reach out via a sleek contact form and manage your account with registration and password reset features.
+
+- ♿ **Accessibility Considerations:**  
+  Semantic HTML, ARIA labels, and keyboard-friendly controls for an inclusive experience.
+
+- 🎨 **Organized & Extensible Codebase:**  
+  Clean CSS, modular JavaScript, and a logical folder structure for easy customization and maintenance.
   
 ---
+
+## Project Structure
+
+```
+bubbistix/
+  ├── css/           # Stylesheets
+  ├── fonts/         # Custom fonts
+  ├── images/        # Images and icons
+  ├── js/            # JavaScript files
+  ├── index.html     # Home page
+  ├── shop.html      # Shop page
+  └── ...            # Other HTML pages
+```
+---
+
 ## Installation
 
 1. Clone the repository:
@@ -65,9 +97,9 @@ Pull requests are warmly welcome!
 * Michelle Joi Quesada 💫
   
 ---
-## License
 
-Distributed under IDK license! Come back later!
+## License
+© 2025 Bubbistix. For educational purposes only.
 
 ---
 
