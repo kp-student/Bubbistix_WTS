@@ -727,6 +727,7 @@ button:hover {
 
 .login-btn {
   background-color: #49705B;
+  font-family: 'Poppins', sans-serif;
   color: white;
   padding: 0.7rem;
   border: none;
