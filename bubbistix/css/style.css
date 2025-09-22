@@ -251,17 +251,6 @@ header {
   transform: scale(1.05);
 }
 
-/* About Preview */
-.about-preview {
-  padding: 3rem 2rem;
-  text-align: center;
-}
-
-.about-preview p {
-  max-width: 37.5rem;
-  margin: 1rem auto;
-  color: #444;
-}
 
 footer {
   background: var(--bubblegum-pink);
@@ -288,9 +277,11 @@ footer {
   border-radius: 1.25rem;
   margin-right: 0.5rem;
   width: 12.5rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer-subscribe button {
+  font-family: 'Poppins', sans-serif;
   padding: 0.6rem 1rem;
   border: none;
   background: #ff6fa7;
@@ -359,8 +350,35 @@ footer {
   }
 }
 
+/* Promo Section */
+
+.promo-container {
+  max-width: 700px;      /* keeps it from stretching too wide */
+  margin: 0 auto;        /* centers the container */
+}
+
+.promo-container p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* List Styling */
+.promo-container ul {
+  list-style: none;       
+  padding-left: 2rem;        
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.promo-container ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  color: white;
+}
+
 /* About Section */
-.about, .shop-header{
+.about, .shop-header {
   padding: 3rem 2rem;
   background: white;
 }
@@ -394,13 +412,11 @@ footer {
   list-style: none;
   margin: 1rem 0;
   padding: 0;
-}
-
-.about-text ul li {
   margin-bottom: 0.5rem;
   color: var(--primary-pink);
   font-weight: 600;
 }
+
 
 .about-image img {
   width: 100%;
@@ -408,14 +424,14 @@ footer {
 }
 
 /* Team Section */
-.team {
+.team , .promo {
   padding: 3rem 6rem;
   background: var(--primary-pink);
   text-align: center;
   color: white;
 
 }
-.team-header {
+.team-header , .promo-header {
   font-family: 'Sugar-Flare'; 
   font-size: 3rem;
   color: var(--powder-pink);
@@ -425,7 +441,7 @@ footer {
   letter-spacing: 2px;
 }
 
-.team-subtitle {
+.team-subtitle , .promo-subtitle {
   font-family: 'Outfit', sans-serif;
   font-size: 2.5rem;
   color: var(--powder-pink);
