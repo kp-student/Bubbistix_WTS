@@ -49,12 +49,16 @@ This repository contains the **front-end HTML, CSS, and assets** for the website
 ## Project Structure
 
 ```
+
 bubbistix/
-  ├── html/          # HTML files
-  ├── css/           # Styling
-  ├── fonts/         # Custom fonts
-  ├── images/        # Images and icons
-  └── ...            # Other files
+  ├── docs/
+  │    ├── index.html         # Main entry HTML file (homepage)
+  │    ├── html/              # Other HTML files
+  │    ├── css/               # Stylesheets
+  │    ├── fonts/             # Custom fonts
+  │    └── images/            # Images and icons
+  └──README.md               # Project description, usage, setup
+
 ```
 ---
 

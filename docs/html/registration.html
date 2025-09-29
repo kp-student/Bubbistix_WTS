@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bubbistix | Reset Password</title>
+  <title>Bubbistix | Shop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" type="image/png" href="../images/favi/fav_smile.png">
-  <!-- REMOVED JavaScript for reset password logic -->
+  <!-- REMOVED JavaScript for registration logic -->
    
 </head>
 <body>
@@ -19,36 +19,60 @@
     <nav class="navbar">
       <img src="../images/logo/image.png" alt="BUBBiSTiX" class="logo">
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="shop.html">Stickers</a></li>
-        <li><a href="faqs.html">FAQ</a></li>
+        <li><a href="faqs.html">FAQs</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="registration.html"><img src="../images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
+        <li><a href="registration.html" class="active"><img src="../images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
         <li><a href="add-to-cart.html"><img src="../images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Forgot Password -->
+
+<!-- Registration Page -->
 <main class="registration-main">
   <div class="login-container">
-    <h1 class="login-title">Reset your password</h1>
-    <p class="reset-subtitle">We will send an email to reset your password</p>
+    <h1 class="login-title">Log In</h1>
     
-    <form class="login-form" id="resetPasswordForm">
+    <!-- Success Message for Password Reset -->
+    <div id="resetMessage" class="reset-success-message">
+      <p>We've sent you an email with a link to update your password.</p>
+    </div>
+    
+    <form class="login-form">
       <div class="input-group">
         <input type="email" id="email" name="email" placeholder="Email" required>
       </div>
       
-      <button type="submit" class="login-btn">Submit</button>
+      <div class="input-group">
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      
+      <div class="forgot-password">
+        <a href="reset-password.html" class="forgot-link">Forgot your password?</a>
+      </div>
+      
+      <button type="submit" class="login-btn">Sign In</button>
       
       <div class="create-account">
-        <a href="registration.html" class="create-link">Cancel</a>
+        <a href="create-account.html" class="create-link">Create an account</a>
       </div>
     </form>
   </div>
+
+  <!-- Success Popup -->
+  <div id="loginSuccessPopup" class="success-popup">
+    <div class="success-content">
+      <h2 class="success-message">You're now signed in</h2>
+      <img src="../images/popup/strawberry2.png" alt="Strawberry" class="success-image">
+      <p class="success-redirect">Redirecting to your dashboard...</p>
+      <p class="success-manual">(If the page doesn't redirect, <a href="index.html" class="redirect-link">click here.</a>)</p>
+    </div>
+  </div>
 </main>
+
 
 <!-- Footer -->
 
@@ -59,7 +83,7 @@
     <div class="footer-subscribe">
       <p>Join our mailing list to get discounts, free gifts and exclusive news! ✨</p>
       <form>
-        <input type="email" placeholder="Email" required>
+        <input type="email" placeholder="Enter your email address" required>
         <button type="submit">Subscribe</button>
       </form>
     </div>
@@ -67,7 +91,7 @@
     <!-- Footer Navigation -->
     <div class="footer-nav">
       <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="../index.html">Home</a></li>
       <li><a href="shop.html">Stickers</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="faqs.html">FAQs</a></li>
@@ -84,4 +108,5 @@
 </footer>
 
 </body>
+
 </html>

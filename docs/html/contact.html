@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bubbistix | Create Account</title>
+  <title>Bubbistix | FAQs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" type="image/png" href="../images/favi/fav_smile.png">
-  <!-- REMOVED JavaScript for account creation logic -->
-   
 </head>
 <body>
 
@@ -19,52 +17,40 @@
     <nav class="navbar">
       <img src="../images/logo/image.png" alt="BUBBiSTiX" class="logo">
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="shop.html">Stickers</a></li>
         <li><a href="faqs.html">FAQs</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
         <li><a href="registration.html"><img src="../images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
         <li><a href="add-to-cart.html"><img src="../images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
       </ul>
     </nav>
   </header>
 
-<!-- Create Account -->
-<main class="registration-main">
-  <div class="login-container">
-    <h1 class="login-title">Create Account</h1>
-    
-    <form class="login-form" id="createAccountForm">
-      <div class="input-group">
-        <input type="text" id="username" name="username" placeholder="Username" required>
-      </div>
-      
-      <div class="input-group">
-        <input type="text" id="fullname" name="fullname" placeholder="First & Last Name" required>
-      </div>
-      
-      <div class="input-group">
-        <input type="email" id="email" name="email" placeholder="Email" required>
-      </div>
-      
-      <div class="input-group">
-        <input type="password" id="password" name="password" placeholder="Password" required>
-      </div>
-      
-      <button type="submit" class="login-btn">Create</button>
-    </form>
-  </div>
 
-  <!-- Success Popup -->
-  <div id="successPopup" class="success-popup">
-    <div class="success-content">
-      <h2 class="success-message">Account successfully created! Please sign in <3</h2>
-      <img src="images/strawberry1.png" alt="Strawberry" class="success-image">
-      <button class="login-btn success-btn">Sign In</button>
+  <!-- Contact Section -->
+  <section class="contact">
+    <div class="contact-container">
+      <div class="contact-text">
+        <h2>Leave us a Message</h2>
+        <p> Something on your mind?
+<br />Whether it’s a question, a shout-out, or a sticker story,
+<br />send it our way and we’ll get back to you ASAP— promise! 💌
+        </p>
+      </div>
+     <form>
+    <div class="input-row">
+      <input type="text" placeholder="Name" name="name" />
+      <input type="email" placeholder="Email Address" name="email" required />
     </div>
-  </div>
-</main>
+    <textarea placeholder="Comment" name="comment"></textarea>
+    <button type="submit" class="squishy-btn">Send</button>
+    
+  </form>
+      </div>
+    </div>
+  </section>
 
 <!-- Footer -->
 
@@ -75,24 +61,25 @@
     <div class="footer-subscribe">
       <p>Join our mailing list to get discounts, free gifts and exclusive news! ✨</p>
       <form>
-        <input type="email" placeholder="Email" required>
+        <input type="email" placeholder="Enter your email address" required>
         <button type="submit">Subscribe</button>
       </form>
     </div>
 
-    <!-- Footer Links -->
+    <!-- Footer Navigation -->
     <div class="footer-nav">
       <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="../index.html">Home</a></li>
       <li><a href="shop.html">Stickers</a></li>
       <li><a href="about.html">About Us</a></li>
       <li><a href="faqs.html">FAQs</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
     </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2024 Bubbistix. All rights reserved.</p>
+    <!-- Copyright -->
+    <div class="footer-copy">
+      <p>Copyright © Bubbistix 2025</p>
     </div>
 
   </div>
