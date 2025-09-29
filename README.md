@@ -52,7 +52,7 @@ This repository contains the **front-end HTML, CSS, and assets** for the website
 ## Project Structure
 
 ```
-bubbistix/
+docs/
   ├── css/           # Stylesheets
   ├── fonts/         # Custom fonts
   ├── images/        # Images and icons
