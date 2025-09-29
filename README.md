@@ -19,7 +19,7 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 ---
 
 ## About
-Bubbistix is a fun, colorful online sticker shop.shop built for **Web Systems and Technology (H3101)**.
+Bubbistix is a fun and colorful online sticker shop built as a requirement for **Web Systems and Technology (H3101)**.
 
 This repo contains the complete **front‑end** (HTML, CSS, images, and fonts). No frameworks or build tools required.
 
