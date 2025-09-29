@@ -10,7 +10,6 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Installation](#installation)  
-- [Usage](#usage)  
 - [Contributing](#contributing)  
 - [Our Team](#our-team)  
 - [License](#license)
@@ -19,8 +18,12 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 
 ## About
 
-Bubbistix is a fun, colorful online sticker shop.  
-This repository contains the **front-end HTML, CSS, and assets** for the website as a requirement for Web Systems and Technology H3101.
+> Bubbistix is a fun, colorful online sticker shop.  
+> This repository contains the **initial front-end HTML, CSS, and assets** for the website as a requirement for Web Systems and Technology H3101.
+
+> **Note:**  
+> This is the initial launch using only HTML and CSS.  
+> Future updates will introduce JavaScript for interactivity and Bootstrap for enhanced styling and responsive features.
 
 ---
 
@@ -49,7 +52,6 @@ This repository contains the **front-end HTML, CSS, and assets** for the website
 ## Project Structure
 
 ```
-
 bubbistix/
   ├── docs/
   │    ├── index.html         # Main HTML file (homepage)
@@ -58,7 +60,6 @@ bubbistix/
   │    ├── fonts/             # Custom fonts
   │    └── images/            # Images and icons
   └──README.md                # Project description, usage, setup
-
 ```
 ---
 
