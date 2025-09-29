@@ -52,12 +52,12 @@ This repository contains the **front-end HTML, CSS, and assets** for the website
 
 bubbistix/
   ├── docs/
-  │    ├── index.html         # Main entry HTML file (homepage)
+  │    ├── index.html         # Main HTML file (homepage)
   │    ├── html/              # Other HTML files
   │    ├── css/               # Stylesheets
   │    ├── fonts/             # Custom fonts
   │    └── images/            # Images and icons
-  └──README.md               # Project description, usage, setup
+  └──README.md                # Project description, usage, setup
 
 ```
 ---
