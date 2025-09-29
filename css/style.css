@@ -580,6 +580,7 @@ button:hover {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
+  background-color: white;
 }
 
 .faq-question {
@@ -593,17 +594,33 @@ button:hover {
   color: var(--leafy-green);
   font-weight: 600;
   font-size: 1.1rem;
+  list-style: none; /* remove default arrow */
 }
 
 .faq-question:hover {
   background-color: #e9ecef;
 }
 
-.faq-toggle {
+/* Hide default <summary> arrow */
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+.faq-question::marker {
+  content: "";
+}
+
+/* Toggle sign */
+.faq-toggle::before {
+  content: "+";
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--leafy-green);
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
+}
+
+/* Change + to – when open */
+.faq-item[open] .faq-toggle::before {
+  content: "–";
 }
 
 .faq-answer {
@@ -611,7 +628,6 @@ button:hover {
   background-color: white;
   color: #333;
   line-height: 1.6;
-  display: none;
 }
 
 .faq-answer h4 {
@@ -626,15 +642,6 @@ button:hover {
 
 .faq-answer p:last-child {
   margin-bottom: 0;
-}
-
-/* Active state for opened FAQ */
-.faq-item.active .faq-answer {
-  display: block;
-}
-
-.faq-item.active .faq-toggle {
-  transform: rotate(45deg);
 }
 
 /* Registration/Login Page Styles */
@@ -654,7 +661,7 @@ button:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../images/background_signup.png');
+  background-image: url('../images/bg/background_signup.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -839,7 +846,7 @@ button:hover {
   padding: 2rem;
   background: 
     linear-gradient(135deg, rgba(245, 128, 146, 0.7) 0%, rgba(252, 228, 236, 0.7) 100%),
-    url('../images/background_signup.png');
+    url('../images/bg/background_signup.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -868,6 +875,13 @@ button:hover {
   color: #e6536d;
   font-size: 2.5rem;
   margin: 0;
+}
+
+.cart-note {
+  color: var(--primary-pink);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .continue-shopping {
@@ -1083,7 +1097,7 @@ button:hover {
 .checkout-main {
   background: 
     linear-gradient(135deg, rgba(245, 128, 146, 0.7) 0%, rgba(252, 228, 236, 0.7) 100%),
-    url('../images/background_signup.png');
+    url('../images/bg/background_signup.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1766,6 +1780,8 @@ button:hover {
   height: 1rem;
 }
 
+/** Add to Cart Button **/
+
 .product-btn {
   background-color: var(--leafy-green);
   font-family: 'Poppins', sans-serif;
@@ -1773,20 +1789,58 @@ button:hover {
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  text-align: center; 
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; /* Adds "..." if the text is too long */
-  display: inline-block; /* Ensure the button adjusts to the content size */
-  line-height: 1.4; /* Adjust line-height for better vertical alignment */
-  border-radius: 5px; /* Optional: Adds rounded corners */
+  border-radius: 5px;
   width: auto;
+  position: relative; /* required for tooltip positioning */
+  outline: none; /* optional, removes default focus outline */
 }
 
-
-.product-btn:hover {
+/* Hover + Focus color */
+.product-btn:hover,
+.product-btn:focus {
   background-color: var(--primary-pink);
+}
 
+/* Tooltip styles */
+.product-btn::after {
+  content: "This button will be functional in the next update!🍓";
+  position: absolute;
+  top: 125%; /* show below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+/* Tooltip arrow */
+.product-btn::before {
+  content: "";
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+/* Show tooltip on hover and focus (click) */
+.product-btn:hover::after,
+.product-btn:focus::after,
+.product-btn:hover::before,
+.product-btn:focus::before {
+  opacity: 1;
 }
 
 
@@ -1828,7 +1882,7 @@ button:hover {
 .popup-content {
   position: relative;
   width: 600px;
-  background-image: url('../images/add-to-cart-popup.png');
+  background-image: url('../images/popup/add-to-cart-popup.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
