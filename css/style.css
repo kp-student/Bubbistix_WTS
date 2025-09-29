@@ -1359,6 +1359,8 @@ button:hover {
 
 .discount-section {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -1369,6 +1371,8 @@ button:hover {
   border: 2px solid #f0f0f0;
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
+  max-width: 190px;
+  height: 45px;
 }
 
 .apply-btn {
@@ -1380,6 +1384,7 @@ button:hover {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .apply-btn:hover {
@@ -1711,6 +1716,14 @@ button:hover {
   color: var(--primary-pink);
   margin-bottom: 20px;
   padding: 3rem 2rem;
+}
+
+#set-boba h2,
+#set-mochi h2,
+#set-magic h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 }
 
 /***** Grid Layout for Items inside Shop Gallery *****/
