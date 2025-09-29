@@ -1,5 +1,4 @@
-# Bubbistix✨
-
+# Bubbistix ✨
 **Berry glad you're here 🍓**  
 Stickers that sprinkle joy and whimsy on your everyday items!
 
@@ -7,23 +6,22 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 
 ## Table of Contents
 - [About](#about)  
-- [Features](#features)
-- [Project Structure](#project-structure)
+- [Features](#features)  
+- [Site Map (Pages)](#site-map-pages)  
+- [Project Structure](#project-structure)  
 - [Installation](#installation)  
+- [Typography & Assets](#typography--assets)  
 - [Contributing](#contributing)  
 - [Our Team](#our-team)  
-- [License](#license)
+- [Notes & Limitations](#notes--limitations)  
+- [License](#license)  
 
 ---
 
 ## About
+Bubbistix is a fun, colorful online sticker shop.shop built for **Web Systems and Technology (H3101)**.
 
-> Bubbistix is a fun, colorful online sticker shop.  
-> This repository contains the **initial front-end HTML, CSS, and assets** for the website as a requirement for Web Systems and Technology H3101.
-
-> **Note:**  
-> This is the initial launch using only HTML and CSS.  
-> Future updates will introduce JavaScript for interactivity and Bootstrap for enhanced styling and responsive features.
+This repo contains the complete **front‑end** (HTML, CSS, images, and fonts). No frameworks or build tools required.
 
 ---
 
@@ -49,18 +47,43 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 
 ---
 
-## Project Structure
+## Site Map (Pages)
+All pages live in **`/html`**:
 
+- `index.html` — **Home** page with hero banner, featured sections, and navigation.
+- `about.html` — Team overview and brand story.
+- `shop.html` — Sticker catalog with **search**, **sort (A–Z, Z–A, price)**, and **category jump links**.
+- `add-to-cart.html` — Cart preview UI.
+- `checkout.html` — Checkout layout/UI scaffold.
+- `order-confirmation.html` — Post‑checkout confirmation screen.
+- `registration.html` — Sign‑in / Sign‑up entry screen.
+- `create-account.html` — Create account form UI.
+- `reset-password.html` — Password reset form UI.
+- `faqs.html` — Frequently asked questions.
+- `contact.html` — Contact details & form UI.
+
+> This is a **static** site; forms and cart flows are front‑end only (no backend/auth or payment integration).
+
+---
+
+## Project Structure
 ```
-bubbistix/
-  ├── docs/
-  │    ├── index.html         # Main HTML file (homepage)
-  │    ├── html/              # Other HTML files
-  │    ├── css/               # Stylesheets
-  │    ├── fonts/             # Custom fonts
-  │    └── images/            # Images and icons
-  └──README.md                # Project description, usage, setup
+Bubbistix_WTS/
+├─ html/                 # All HTML pages (Home, Shop, About, FAQs, Contact, Auth, Cart, Checkout)
+├─ css/
+│  └─ style.css          # Global styling
+├─ images/               # All images (stickers, team, background, icons, etc.)
+│  ├─ bg/
+│  ├─ logo/
+│  ├─ misc/
+│  ├─ popup/
+│  ├─ stickers/
+│  ├─ team/
+│  └─ Welcome-Image/
+├─ fonts/                # Local font files (.otf/.ttf)
+└─ README.md             # (This file)
 ```
+
 ---
 
 ## Installation
@@ -77,6 +100,15 @@ git clone https://github.com/your-username/bubbistix.git
 
 ---
 
+## Typography & Assets
+- Fonts are included in `/fonts` and referenced in the pages and CSS.
+- Images are located in `/images` with subfolders for product sets and UI assets.
+- Favicon assets live in `/images/favi` (as referenced by the pages).
+
+> Ensure the `/fonts` and `/images` folders remain in their original relative locations for paths to resolve correctly.
+
+---
+
 ## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature branch.  
@@ -87,19 +119,25 @@ Pull requests are warmly welcome!
 3. Commit your Changes: `git commit -m 'Add some AmazingFeature'`
 4. Push to the Branch: `git push origin feature/AmazingFeature`
 5. Open a Pull Request
+
 ---
 
 ## Our Team
+- Kristine Paul Garcia 🌙  
+- Mara Julienne Rose Cervantes 🌟  
+- Lianne Marie Dioso ✨  
+- Michelle Joi Quesada 💫  
 
-* Kristine Paul Garcia 🌙
-* Mara Julienne Rose Cervantes 🌟
-* Lianne Marie Dioso ✨
-* Michelle Joi Quesada 💫
-  
+---
+
+## Notes & Limitations
+- This is a **front‑end only** educational project—no database, sessions, or payments.
+- “Add to Cart”, “Checkout”, and account pages are **UI prototypes**.
+
 ---
 
 ## License
-© 2025 Bubbistix. For educational purposes only.
+© 2025 Bubbistix. For educational use only.
 
 ---
 
