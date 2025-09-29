@@ -44,22 +44,17 @@ This repository contains the **front-end HTML, CSS, and assets** for the website
 - ♿ **Accessibility Considerations:**  
   Semantic HTML, ARIA labels, and keyboard-friendly controls for an inclusive experience.
 
-- 🎨 **Organized & Extensible Codebase:**  
-  Clean CSS, modular JavaScript, and a logical folder structure for easy customization and maintenance.
-  
 ---
 
 ## Project Structure
 
 ```
-docs/
-  ├── css/           # Stylesheets
+bubbistix/
+  ├── html/          # HTML files
+  ├── css/           # Styling
   ├── fonts/         # Custom fonts
   ├── images/        # Images and icons
-  ├── js/            # JavaScript files
-  ├── index.html     # Home page
-  ├── shop.html      # Shop page
-  └── ...            # Other HTML pages
+  └── ...            # Other files
 ```
 ---
 
