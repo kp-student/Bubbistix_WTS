@@ -1912,3 +1912,68 @@ button:hover {
     transform: translateY(0) scale(1);
   }
 }
+
+/* Additional styles for inline elements moved from HTML */
+.success-image-centered {
+  display: block;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.success-redirect {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.success-manual {
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.redirect-link {
+  color: #E6536D;
+  text-decoration: underline;
+}
+
+.redirect-link:hover {
+  color: #d63384;
+}
+
+/* Checkout message styles */
+.checkout-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Lucid-Dream', sans-serif;
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.checkout-message.success {
+  background: #28a745;
+}
+
+.checkout-message.error {
+  background: #dc3545;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -14,28 +14,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializePaymentMethods() {
-    const paymentOptions = document.querySelectorAll('.payment-option');
+    const paymentOptions = document.querySelectorAll('input[name="payment"]');
     const creditCardFields = document.getElementById('credit-card-fields');
     
     paymentOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            // Remove selected class from all options
-            paymentOptions.forEach(opt => opt.classList.remove('selected'));
-            
-            // Add selected class to clicked option
-            this.classList.add('selected');
-            
-            // Check the radio button
-            const radio = this.querySelector('input[type="radio"]');
-            if (radio) {
-                radio.checked = true;
-                
-                // Show/hide credit card fields based on selection
-                if (radio.value === 'credit_card') {
-                    creditCardFields.style.display = 'block';
-                } else if (radio.value === 'cash_on_delivery') {
-                    creditCardFields.style.display = 'none';
-                }
+        option.addEventListener('change', function() {
+            if (this.value === 'credit_card') {
+                creditCardFields.style.display = 'block';
+            } else {
+                creditCardFields.style.display = 'none';
             }
         });
     });
@@ -45,65 +32,73 @@ function initializeFormValidation() {
     const form = document.getElementById('checkoutForm');
     const payNowBtn = document.getElementById('payNowBtn');
     
-    if (payNowBtn) {
-        payNowBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            if (validateForm()) {
-                processPayment();
-            }
-        });
-    }
+    payNowBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (validateForm()) {
+            processPayment();
+        }
+    });
 }
 
 function validateForm() {
     const requiredFields = [
-        'email',
-        'firstName',
-        'lastName',
-        'address',
-        'postalCode',
-        'city',
-        'phone'
+        'email', 'firstName', 'lastName', 'address', 'postalCode', 'city'
     ];
     
     let isValid = true;
     
-    // Check required text fields
     requiredFields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
-        if (field && !field.value.trim()) {
+        if (!field.value.trim()) {
             field.style.borderColor = '#dc3545';
             isValid = false;
-        } else if (field) {
-            field.style.borderColor = '#f0f0f0';
+        } else {
+            field.style.borderColor = '#ddd';
         }
     });
     
-    // Check location dropdowns
-    const island = document.getElementById('island-select');
-    const region = document.getElementById('region-select');
-    const province = document.getElementById('province-select');
-    
-    if (!island.value || !region.value || !province.value) {
-        if (!island.value) island.style.borderColor = '#dc3545';
-        if (!region.value) region.style.borderColor = '#dc3545';
-        if (!province.value) province.style.borderColor = '#dc3545';
-        isValid = false;
-    }
-    
-    // Check payment method
-    const paymentMethod = document.querySelector('input[name="payment"]:checked');
-    if (!paymentMethod) {
-        alert('Please select a payment method');
-        isValid = false;
+    // Validate payment method specific fields
+    const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+    if (paymentMethod === 'credit_card') {
+        const cardFields = ['cardNumber', 'expiryDate', 'cvv', 'cardName'];
+        cardFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field && !field.value.trim()) {
+                field.style.borderColor = '#dc3545';
+                isValid = false;
+            } else if (field) {
+                field.style.borderColor = '#ddd';
+            }
+        });
     }
     
     if (!isValid) {
-        alert('Please fill in all required fields');
+        showMessage('Please fill in all required fields', 'error');
     }
     
     return isValid;
+}
+
+function initializeDiscountCode() {
+    const applyBtn = document.getElementById('applyDiscount');
+    const discountInput = document.getElementById('discountCode');
+    
+    applyBtn.addEventListener('click', function() {
+        const code = discountInput.value.trim().toUpperCase();
+        if (code) {
+            applyDiscountCode(code);
+        }
+    });
+    
+    discountInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const code = this.value.trim().toUpperCase();
+            if (code) {
+                applyDiscountCode(code);
+            }
+        }
+    });
 }
 
 function loadCartItems() {
@@ -141,27 +136,6 @@ function loadCartItems() {
     // Update totals
     subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
     totalElement.textContent = `₱${subtotal.toFixed(2)}`;
-}
-
-function initializeDiscountCode() {
-    const applyBtn = document.getElementById('applyDiscount');
-    const discountInput = document.getElementById('discountCode');
-    
-    if (applyBtn) {
-        applyBtn.addEventListener('click', function() {
-            const code = discountInput.value.trim().toUpperCase();
-            applyDiscountCode(code);
-        });
-    }
-    
-    if (discountInput) {
-        discountInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const code = this.value.trim().toUpperCase();
-                applyDiscountCode(code);
-            }
-        });
-    }
 }
 
 function applyDiscountCode(code) {
@@ -216,18 +190,6 @@ function showMessage(message, type) {
     
     const messageDiv = document.createElement('div');
     messageDiv.className = `checkout-message ${type}`;
-    messageDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 10px;
-        color: white;
-        font-family: 'Lucid-Dream', sans-serif;
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-        ${type === 'success' ? 'background: #28a745;' : 'background: #dc3545;'}
-    `;
     messageDiv.textContent = message;
     
     document.body.appendChild(messageDiv);
@@ -295,19 +257,3 @@ function processPayment() {
         window.location.href = 'order-confirmation.html';
     }, 2000);
 }
-
-// Add CSS animation for messages
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-`;
-document.head.appendChild(style);
