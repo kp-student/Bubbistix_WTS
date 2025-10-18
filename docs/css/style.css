@@ -1343,6 +1343,13 @@ button:hover {
     margin-bottom: 2rem;
 }
 
+.gallery-item-name {
+    font-weight: bold;
+    font-size: large;
+    color: var(--primary-pink);
+    margin-top: auto;
+}
+
 .category {
     background-color: #fff;
     padding: 20px;
@@ -1591,19 +1598,17 @@ button:hover {
 /* MOBILE FILTER BUTTON STYLING                */
 /* =========================================== */
 
-/* Style the fixed button wrapper for the hamburger menu */
+/*button wrapper for the hamburger menu */
 .fixed-mobile-filter {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1050;
-    box-shadow: 0 4px 12px rgba(245, 128, 146, 0.4); 
     border-radius: 50px;
 }
 
 .fixed-mobile-filter button,
 .shop-toolbar button {
-    /* Styles matching your .product-btn */
     background-color: var(--primary-pink) !important;
     color: white !important;
     padding: 10px 15px !important; 
@@ -1614,9 +1619,9 @@ button:hover {
     border: none !important;
 }
 
-.fixed-mobile-filter button:hover,
-.shop-toolbar button:hover {
-    background-color: var(--bubblegum-pink) !important;
+.fixed-mobile-filter button:focus {
+    outline: none !important; 
+    box-shadow: 0 0 0 4px rgba(245, 128, 146, 0.4) !important; 
 }
 /* Offpage END*/
 

@@ -119,7 +119,7 @@ function renderGallery(filterText = "", sortBy = "") {
           <div class="items">
             ${grouped[set].map(product => {
               const folder = getFolderName(product.set);
-              const imagePath = `/docs/images/stickers/${folder}/${product.image}`;
+              const imagePath = `../images/stickers/${folder}/${product.image}`;
               return `
                 <div class="item">
                   <img src="${imagePath}" alt="${product.name}">
