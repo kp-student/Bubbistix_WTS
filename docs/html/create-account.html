@@ -13,21 +13,40 @@
   <script src="js/create_account.js" defer></script>
 </head>
 <body>
-
-  <header>
-    <nav class="navbar">
-      <img src="images/logo/image.png" alt="BUBBiSTiX" class="logo">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="shop.html">Stickers</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="registration.html"><img src="images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
-        <li><a href="add-to-cart.html"><img src="images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- NAVIGATION BAR -->
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid flex-column flex-lg-row">
+      <input id="nav-toggle" type="checkbox">
+      <div class="logo-and-toggler-wrapper d-flex justify-content-between align-items-center w-100 p-2 p-lg-0">
+  
+        <a class="navbar-brand" href="../../index.html">
+          <img src="../images/logo/image.png" alt="BUBBiSTiX" class="logo">
+        </a>
+        
+        <div class="pure-css-hamburger d-lg-none">
+            <label for="nav-toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+        </div>
+        
+      </div> 
+      <div class="collapse navbar-collapse justify-content-lg-center w-100" id="navbarNav">
+        <ul class="navbar-nav nav-links">
+          <li class="nav-item"><a href="../../index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="shop.html" class="nav-link">Stickers</a></li>
+          <li class="nav-item"><a href="faqs.html" class="nav-link">FAQs</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item"><a href="registration.html" class="nav-link active" aria-current="page"><img src="../images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
+          <li class="nav-item"><a href="add-to-cart.html" class="nav-link"><img src="../images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
+        </ul> 
+      </div>
+    </div>
+  </nav>
+</header>
 
 <!-- Create Account -->
 <main class="registration-main">
@@ -82,8 +101,8 @@
     <div class="footer-nav">
       <ul>
         <li><a href="../../index.html">Home</a></li>
-        <li><a href="shop.html">Stickers</a></li>
         <li><a href="about.html">About Us</a></li>
+        <li><a href="shop.html">Stickers</a></li>
         <li><a href="faqs.html">FAQs</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
