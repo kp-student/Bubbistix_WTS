@@ -1,9 +1,9 @@
 
 const gallery = document.getElementById('gallery');
 const categoryNav = document.getElementById('category-nav');
-const searchInput = document.getElementById('search-input');
-const sortSelect = document.getElementById('sort-select');
-
+const categoryNavMobile = document.getElementById('category-nav-mobile');
+const searchInputs = document.querySelectorAll('#search-input, #search-input-mobile');
+const sortSelectors = document.querySelectorAll('#sort-select, #sort-select-mobile');
 
 // Product Data
 const products = [
@@ -50,89 +50,130 @@ function getFolderName(setName) {
 
 // Function to render the gallery based on filters
 function renderGallery(filterText = "", sortBy = "") {
-  gallery.innerHTML = "";
-  categoryNav.innerHTML = "";
+    gallery.innerHTML = "";
+    
+    // 1. Get both navigation elements
+    const categoryNavMobile = document.getElementById('category-nav-mobile');
+    
+    // 2. CLEAR BOTH NAVIGATION LISTS
+    categoryNav.innerHTML = ""; // Clears desktop nav 
+    if (categoryNavMobile) {
+        categoryNavMobile.innerHTML = ""; // Clears mobile nav (if it exists)
+    }
 
-  // Group products by set
-  const grouped = {};
+    // Group products by set
+    const grouped = {};
+    let filteredProducts = [...products];
 
-  let filteredProducts = [...products];
+    // --- Search and Sort Filter Logic (omitted, remains the same) ---
+    if (filterText) {
+        filteredProducts = filteredProducts.filter(p =>
+          p.name.toLowerCase().includes(filterText.toLowerCase())
+        );
+    }
 
-  // Search filter
-  if (filterText) {
-    filteredProducts = filteredProducts.filter(p =>
-      p.name.toLowerCase().includes(filterText.toLowerCase())
-    );
-  }
+    if (sortBy === "az") {
+        filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === "za") {
+        filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sortBy === "price-low") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "price-high") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+    }
+    
+    filteredProducts.forEach(product => {
+        if (!grouped[product.set]) grouped[product.set] = [];
+        grouped[product.set].push(product);
+    });
 
-  // Sort filter
-  if (sortBy === "az") {
-    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortBy === "za") {
-    filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
-  } else if (sortBy === "price-low") {
-    filteredProducts.sort((a, b) => a.price - b.price);
-  } else if (sortBy === "price-high") {
-    filteredProducts.sort((a, b) => b.price - a.price);
-  }
+    if (filteredProducts.length === 0) {
+        gallery.innerHTML = "<p>No products found.</p>";
+        return;
+    }
 
-  // Group by set after filter and sort
-  filteredProducts.forEach(product => {
-    if (!grouped[product.set]) grouped[product.set] = [];
-    grouped[product.set].push(product);
-  });
+// Render category sections and sidebar nav
+    Object.keys(grouped).forEach(set => {
+        const categoryId = set.toLowerCase().replace(/\s+/g, "-");
 
-  // If no products found
-  if (filteredProducts.length === 0) {
-    gallery.innerHTML = "<p>No products found.</p>";
-    return;
-  }
+        // 1. CREATE THE NAV ITEM
+        const navItem = document.createElement("li");
+        navItem.innerHTML = `<a href="#${categoryId}">${set}</a>`;
+        
+        // 2. APPEND TO DESKTOP NAV
+        categoryNav.appendChild(navItem);
 
-  // Render category sections and sidebar nav
-  Object.keys(grouped).forEach(set => {
-    const categoryId = set.toLowerCase().replace(/\s+/g, "-");
+        // 3. APPEND TO MOBILE NAV (CRITICAL FIX: Uses the new variable)
+        if (categoryNavMobile) {
+            // Clone the list item and append it to the mobile list
+            const navItemMobile = navItem.cloneNode(true); 
+            categoryNavMobile.appendChild(navItemMobile);
+        }
 
-    // Sidebar link
-    const navItem = document.createElement("li");
-    navItem.innerHTML = `<a href="#${categoryId}">${set}</a>`;
-    categoryNav.appendChild(navItem);
-
-    // Category section
-    const category = document.createElement("div");
-    category.classList.add("category");
-    category.id = categoryId;
-    category.innerHTML = `
-      <h2>${set}</h2>
-      <div class="items">
-        ${grouped[set].map(product => {
-          const folder = getFolderName(product.set);
-          const imagePath = `images/stickers/${folder}/${product.image}`;
-          return `
-            <div class="item">
-              <img src="${imagePath}" alt="${product.name}">
-              <p class="gallery-item-name">${product.name}</p>
-              <p class="gallery-item-price">₱${product.price.toFixed(2)}</p>
-              <button class="product-btn" onclick="addToCart('${product.name}', '${imagePath}', ${product.price})">Add to Cart</button>
-            </div>
-          `;
-        }).join('')}
-      </div>
-    `;
-    gallery.appendChild(category);
-  });
+        // Category section rendering remains the same...
+        const category = document.createElement("div");
+        category.classList.add("category");
+        category.id = categoryId;
+        category.innerHTML = `
+          <h2>${set}</h2>
+          <div class="items">
+            ${grouped[set].map(product => {
+              const folder = getFolderName(product.set);
+              const imagePath = `/docs/images/stickers/${folder}/${product.image}`;
+              return `
+                <div class="item">
+                  <img src="${imagePath}" alt="${product.name}">
+                  <p class="gallery-item-name">${product.name}</p>
+                  <p class="gallery-item-price">₱${product.price.toFixed(2)}</p>
+                  <button class="product-btn" onclick="addToCart('${product.name}', '${imagePath}', ${product.price})">Add to Cart</button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+        gallery.appendChild(category);
+    });
 }
 
 // On page load
 renderGallery();
 
-// Search event
-searchInput.addEventListener("input", () => {
-  renderGallery(searchInput.value, sortSelect.value);
+// 1. Search event: Loop through all search inputs
+searchInputs.forEach(input => {
+    input.addEventListener("input", function() {
+        const filterText = this.value; // Read value from the input the user is typing in
+        
+        // SYNC FIX: Update the value of the other search input to match
+        searchInputs.forEach(otherInput => {
+            if (otherInput !== this) {
+                otherInput.value = filterText;
+            }
+        });
+        
+        // Use the current value of the primary sort selector (desktop is typically [0])
+        const sortValue = sortSelectors[0] ? sortSelectors[0].value : ""; 
+        
+        renderGallery(filterText, sortValue);
+    });
 });
 
-// Sort event
-sortSelect.addEventListener("change", () => {
-  renderGallery(searchInput.value, sortSelect.value);
+// 2. Sort event: Loop through all sort selects
+sortSelectors.forEach(select => {
+    select.addEventListener("change", function() {
+        const sortValue = this.value; // Read value from the select box the user changed
+        
+        // SYNC FIX: Update the value of the other select box to match
+        sortSelectors.forEach(otherSelect => {
+            if (otherSelect !== this) {
+                otherSelect.value = sortValue;
+            }
+        });
+        
+        // Use the current value of the primary search input (desktop is typically [0])
+        const filterText = searchInputs[0] ? searchInputs[0].value : "";
+        
+        renderGallery(filterText, sortValue);
+    });
 });
 
 // Add to cart logic

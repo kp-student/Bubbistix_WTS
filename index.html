@@ -4,61 +4,91 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bubbistix | Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="docs/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="docs/images/fav_smile.png">
+  <link rel="icon" type="image/png" href="docs/images/favi/fav_smile.png">
   
 </head>
 <body>
 
-  <!-- NAVI BAR -->
+<!-- HEADER AND NAVIGATION BAR -->
 <header>
-  <nav class="navbar">
-    <img src="docs/images/logo/image.png" alt="BUBBiSTiX" class="logo">
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="docs/about.html">About Us</a></li>
-      <li><a href="docs/shop.html">Stickers</a></li>
-      <li><a href="docs/faqs.html">FAQs</a></li>
-      <li><a href="docs/contact.html">Contact</a></li>
-      <li><a href="docs/registration.html"><img src="docs/images/misc/Account-Icon.png" alt="Account" class="nav-icon"></a></li>
-      <li><a href="docs/add-to-cart.html"><img src="docs/images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon"></a></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid flex-column flex-lg-row">
+      
+      <input id="nav-toggle" type="checkbox">
+      
+      <div class="logo-and-toggler-wrapper d-flex justify-content-between align-items-center w-100 p-2 p-lg-0">
+        
+        <a class="navbar-brand" href="index.html">
+          <img src="docs/images/logo/image.png" alt="BUBBiSTiX" class="logo">
+        </a>
+        
+        <div class="pure-css-hamburger d-lg-none">
+            <label for="nav-toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+        </div>
+        
+      </div> <div class="collapse navbar-collapse justify-content-lg-center w-100" id="navbarNav">
+          <ul class="navbar-nav nav-links">
+          <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="docs/html/about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="docs/html/shop.html" class="nav-link">Stickers</a></li>
+          <li class="nav-item"><a href="docs/html/faqs.html" class="nav-link">FAQs</a></li>
+          <li class="nav-item"><a href="docs/html/contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item">
+            <a href="docs/html/registration.html" class="nav-link">
+              <img src="docs/images/misc/Account-Icon.png" alt="Account" class="nav-icon">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="docs/html/add-to-cart.html" class="nav-link">
+              <img src="docs/images/misc/Add-to-cart-Icon.png" alt="Cart" class="nav-icon">
+            </a>
+          </li>
+        </ul> 
+      </div>
+    </div>
   </nav>
 </header>
 
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-text">
-      <a href="docs/shop.html" class="squishy-btn">Shop Now</a>
+<!-- Hero Section -->
+<section class="hero d-flex align-items-end text-center pb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col">
+        <a href="docs/html/shop.html" class="squishy-btn">Shop Now</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- Featured Collections -->
+<!-- Featured Collections -->
 <section class="collections">
   <h1 class="collection-title">✨Our Collection✨</h1>
   <div class="collection-grid">
 
     <div class="collection-card">
       <img src="docs/images/stickers/set_mochi/cover_mochi1.png" alt="Sakura Mochi Stickers">
-      <a href="docs/shop.html#sakura-mochi">Sakura Mochi →</a>
+      <a href="docs/html/shop.html#sakura-mochi">Sakura Mochi →</a>
     </div>
 
     <div class="collection-card">
       <img src="docs/images/stickers/set_boba/cover_boba.png" alt="Berry Boba Babies Stickers">
-      <a href="docs/shop.html#berry-boba-babies">Berry Boba Babies →</a>
+      <a href="docs/html/shop.html#berry-boba-babies">Berry Boba Babies →</a>
     </div>
 
     <div class="collection-card">
       <img src="docs/images/stickers/set_magic/cover_magic.png" alt="Moonlight Magic Stickers">
-      <a href="docs/shop.html#moonlight-magic">Moonlight Magic →</a>
+      <a href="docs/html/shop.html#moonlight-magic">Moonlight Magic →</a>
     </div>
-
   </div>
 </section>
 
@@ -76,19 +106,18 @@
           <li> 🌟 Behind-the-scenes previews of new designs</li>
         </ul>
         <p>Join the Bubbistix Sticker Club Family now and sprinkle more pastel magic into your world.✨</p>
-    <a href="docs/create-account.html" class="squishy-btn">Sign Me Up</a>
+    <a href="docs/html/create-account.html" class="squishy-btn">Sign Me Up</a>
   </div>
 </section>
 
 
 <!-- Footer -->
-
 <footer>
   <div class="footer-container">
 
     <!-- Mailing List -->
     <div class="footer-subscribe">
-      <p>Join our mailing list to get discounts, free gifts and exclusive news! ✨</p>
+      <p>Unlock up to 10% off today by joining our mailing list to get discounts and exclusive news! ✨</p>
       <form>
         <input type="email" placeholder="Enter your email address" required>
         <button type="submit">Subscribe</button>
@@ -98,11 +127,11 @@
     <!-- Footer Navigation -->
     <div class="footer-nav">
       <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="docs/shop.html">Stickers</a></li>
-      <li><a href="docs/about.html">About Us</a></li>
-      <li><a href="docs/faqs.html">FAQs</a></li>
-      <li><a href="docs/contact.html">Contact</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="docs/html/about.html">About Us</a></li>
+        <li><a href="docs/html/shop.html">Stickers</a></li>
+        <li><a href="docs/html/faqs.html">FAQs</a></li>
+        <li><a href="docs/html/contact.html">Contact</a></li>
       </ul>
     </div>
 
@@ -113,5 +142,6 @@
 
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
