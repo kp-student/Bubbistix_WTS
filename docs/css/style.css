@@ -705,6 +705,11 @@ button:hover {
     z-index: 1000;
 }
 
+/* Ensure success popups remain hidden when the hidden class is applied */
+.success-popup.hidden {
+    display: none;
+}
+
 .success-content {
     background: white;
     padding: 2rem;
@@ -1724,7 +1729,7 @@ footer {
 
 .footer-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
     text-align: center;
 }
@@ -1735,20 +1740,23 @@ footer {
 
 .footer-subscribe form {
     display: flex;
-    flex-direction: column; 
-    gap: 0.5rem; 
-    align-items: center; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .footer-subscribe input {
     padding: 0.6rem;
     border: none;
     border-radius: 1.25rem;
-    margin-right: 0; 
-    width: auto; 
+    margin-right: 0;
+    width: clamp(14rem, 70vw, 25rem);
     font-family: 'Poppins', sans-serif;
-    outline: none; 
+    outline: none;
     box-shadow: 0 0 0 3px var(--powder-pink, #FFC0CB);
+    transition: width 0.25s ease, box-shadow 0.2s ease, margin 0.2s ease;
 }
 
 .footer-subscribe button {
@@ -1759,12 +1767,13 @@ footer {
     color: #fff;
     border-radius: 1.25rem;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease, transform 0.2s ease;
     width: auto;
+    white-space: nowrap;
 }
-
 .footer-subscribe button:hover {
     background: var(--primary-pink);
+    transform: translateY(-1px);
 }
 
 .footer-nav ul {

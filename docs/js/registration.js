@@ -15,8 +15,8 @@ document.querySelector('.login-form').addEventListener('submit', function(e) {
   // Show success popup
   document.getElementById('loginSuccessPopup').style.display = 'flex';
   
-  // Auto redirect after 3 seconds
+  // Auto redirect to home after sign-in
   setTimeout(function() {
-    window.location.href = 'index.html';
-  }, 3000);
+    window.location.href = '../../index.html';
+  }, 1500);
 });
