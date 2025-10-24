@@ -90,7 +90,7 @@
 
             <!-- Postal Code and City -->
             <div class="postal-city-fields">
-              <input type="text" id="postalCode" placeholder="Postal Code" class="checkout-input half-width" required>
+              <input type="text" id="postalCode" placeholder="Postal Code" class="checkout-input half-width" pattern="[0-9]*" inputmode="numeric" required>
               <input type="text" id="city" placeholder="City" class="checkout-input half-width" required>
             </div>
 
@@ -206,8 +206,6 @@
 </footer>
 
   <script src="../js/newsletter.js" defer></script>
-  <script src="js/location-dropdown.js"></script>
-  <script src="js/checkout.js"></script>
   <script src="../js/location-dropdown.js"></script>
   <script src="../js/checkout.js"></script>
 

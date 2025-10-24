@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Confirmation - Bubbistix</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../images/fav_smile.png">
 </head>
-<body>
-<!-- HEADER AND NAVIGATION BAR -->
+<!-- NAVIGATION BAR -->
 <header>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid flex-column flex-lg-row">
@@ -46,11 +46,12 @@
   </nav>
 </header>
 
+
 <!-- MAIN ORDER CONFIRMATION CONTENT -->
   <main class="checkout-main">
     <div class="checkout-container">
       
-      <!-- Left Side - Confirmation Details -->
+
       <div class="checkout-left">
         <!-- Thank You Section -->
         <div class="thank-you-section">
@@ -76,17 +77,16 @@
           <h2 class="section-title">Payment Method</h2>
           <p class="payment-security">All transactions are secure and encrypted.</p>
           <div class="payment-method" id="paymentDetails">
-            <!-- Payment info will be populated by JavaScript -->
           </div>
         </div>
 
         <!-- Back to Home Button -->
         <div class="back-to-home">
-          <a href="/docs/html/shop.html" class= "continue-shopping-link">Continue Shopping</a>
+          <a href="shop.html" class= "continue-shopping-link">Continue Shopping</a>
         </div>
       </div>
 
-      <!-- Right Side - Order Summary -->
+
       <div class="checkout-right">
         <div class="order-summary">
           <h3 class="section-title">Order Summary</h3>
@@ -118,7 +118,7 @@
     </div>
   </main>
 
-  <script src="/docs/js/order-confirmation.js"></script>
+  <script src="../js/order-confirmation.js"></script>
 <!-- Bootstrap 5.3.8 JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>

@@ -56,6 +56,24 @@ function renderCart() {
       <p class="empty-cart" role="alert" aria-live="assertive">Your cart is currently empty. Click "Continue shopping" to add items.</p>
     `;
     document.querySelector('.final-total').textContent = '₱ 0.00 PHP';
+    
+    // Disable checkout button when cart is empty
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.disabled = true;
+      checkoutBtn.textContent = 'Cart is Empty';
+      checkoutBtn.style.backgroundColor = '#ccc';
+      checkoutBtn.style.cursor = 'not-allowed';
+      checkoutBtn.style.opacity = '0.5';
+      checkoutBtn.style.color = '#666';
+      checkoutBtn.style.border = '1px solid #999';
+      checkoutBtn.style.boxShadow = 'none';
+      checkoutBtn.onclick = function(e) {
+        e.preventDefault();
+        alert('Please add items to your cart before proceeding to checkout.');
+        return false;
+      };
+    }
     return;
   }
 
@@ -101,6 +119,22 @@ function renderCart() {
 
   cartItemsContainer.innerHTML = cartHTML;
   document.querySelector('.final-total').textContent = `₱ ${total.toFixed(2)} PHP`;
+  
+  // Re-enable checkout button when cart has items
+  const checkoutBtn = document.querySelector('.checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = 'Check Out';
+    checkoutBtn.style.backgroundColor = '';
+    checkoutBtn.style.cursor = 'pointer';
+    checkoutBtn.style.opacity = '1';
+    checkoutBtn.style.color = '';
+    checkoutBtn.style.border = '';
+    checkoutBtn.style.boxShadow = '';
+    checkoutBtn.onclick = function() {
+      window.location.href = 'checkout.html';
+    };
+  }
 }
 
 // Initialize cart on load

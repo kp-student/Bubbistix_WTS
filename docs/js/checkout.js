@@ -1,5 +1,16 @@
 // Checkout page functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if cart is empty and redirect if necessary
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        // Show message and redirect after a delay
+        showMessage('Your cart is empty. Redirecting to shop...', 'error');
+        setTimeout(() => {
+            window.location.href = 'shop.html';
+        }, 2000);
+        return;
+    }
+    
     // Initialize payment method selection
     initializePaymentMethods();
     
@@ -11,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize discount functionality
     initializeDiscountCode();
+    
+    // Initialize postal code validation
+    initializePostalCodeValidation();
+    
+    // Initialize credit card validation
+    initializeCreditCardValidation();
 
     // Clear any previous discount if the page is just loaded (new checkout session)
     localStorage.removeItem('discountAmount'); 
@@ -40,11 +57,19 @@ function showMessage(message, type) {
 function initializePaymentMethods() {
     const paymentOptions = document.querySelectorAll('input[name="payment"]');
     const creditCardFields = document.getElementById('credit-card-fields');
+    const payNowBtn = document.getElementById('payNowBtn');
     
     paymentOptions.forEach(option => {
         option.addEventListener('change', function() {
             // Toggle visibility based on payment selection
             creditCardFields.style.display = (this.value === 'credit_card') ? 'block' : 'none';
+            
+            // Update button text based on payment method
+            if (this.value === 'cash_on_delivery') {
+                payNowBtn.textContent = 'Place Order';
+            } else {
+                payNowBtn.textContent = 'Pay Now';
+            }
         });
     });
 
@@ -52,6 +77,7 @@ function initializePaymentMethods() {
     const codRadio = document.getElementById('cash-on-delivery');
     if (codRadio && codRadio.checked) {
         creditCardFields.style.display = 'none';
+        payNowBtn.textContent = 'Place Order';
     }
 }
 
@@ -72,6 +98,13 @@ function initializeFormValidation() {
 }
 
 function validateForm() {
+    // 0. Check if cart is empty
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        showMessage('Your cart is empty. Please add items before checkout.', 'error');
+        return false;
+    }
+    
     // 1. Validate mandatory delivery/contact fields
     const requiredFields = [
         'email', 'firstName', 'lastName', 'address', 'postalCode', 'city'
@@ -128,17 +161,185 @@ function initializeDiscountCode() {
     });
 }
 
+function initializePostalCodeValidation() {
+    const postalCodeInput = document.getElementById('postalCode');
+    
+    if (postalCodeInput) {
+        // Only allow numeric input
+        postalCodeInput.addEventListener('input', function(e) {
+            // Remove any non-numeric characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+        
+        // Prevent non-numeric characters on keypress
+        postalCodeInput.addEventListener('keypress', function(e) {
+            // Allow: backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (e.keyCode === 65 && e.ctrlKey === true) ||
+                (e.keyCode === 67 && e.ctrlKey === true) ||
+                (e.keyCode === 86 && e.ctrlKey === true) ||
+                (e.keyCode === 88 && e.ctrlKey === true)) {
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
+}
+
+function initializeCreditCardValidation() {
+    const cardNumberInput = document.getElementById('cardNumber');
+    const expiryDateInput = document.getElementById('expiryDate');
+    const cvvInput = document.getElementById('cvv');
+    
+    // Credit Card Number Validation
+    if (cardNumberInput) {
+        cardNumberInput.addEventListener('input', function(e) {
+            // Remove any non-numeric characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Limit to 16 digits
+            if (this.value.length > 16) {
+                this.value = this.value.substring(0, 16);
+            }
+            
+            // Add spaces every 4 digits for better readability
+            let value = this.value.replace(/\s/g, '');
+            let formattedValue = value.replace(/(.{4})/g, '$1 ').trim();
+            if (formattedValue.length > 19) { // 16 digits + 3 spaces
+                formattedValue = formattedValue.substring(0, 19);
+            }
+            this.value = formattedValue;
+        });
+        
+        cardNumberInput.addEventListener('keypress', function(e) {
+            // Allow: backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (e.keyCode === 65 && e.ctrlKey === true) ||
+                (e.keyCode === 67 && e.ctrlKey === true) ||
+                (e.keyCode === 86 && e.ctrlKey === true) ||
+                (e.keyCode === 88 && e.ctrlKey === true)) {
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
+    
+    // Expiry Date Validation
+    if (expiryDateInput) {
+        expiryDateInput.addEventListener('input', function(e) {
+            // Remove any non-numeric characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Limit to 4 digits
+            if (this.value.length > 4) {
+                this.value = this.value.substring(0, 4);
+            }
+            
+            // Add slash after 2 digits
+            if (this.value.length >= 2) {
+                this.value = this.value.substring(0, 2) + '/' + this.value.substring(2, 4);
+            }
+        });
+        
+        expiryDateInput.addEventListener('keypress', function(e) {
+            // Allow: backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (e.keyCode === 65 && e.ctrlKey === true) ||
+                (e.keyCode === 67 && e.ctrlKey === true) ||
+                (e.keyCode === 86 && e.ctrlKey === true) ||
+                (e.keyCode === 88 && e.ctrlKey === true)) {
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
+    
+    // CVV Validation
+    if (cvvInput) {
+        cvvInput.addEventListener('input', function(e) {
+            // Remove any non-numeric characters
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Limit to 4 digits
+            if (this.value.length > 4) {
+                this.value = this.value.substring(0, 4);
+            }
+        });
+        
+        cvvInput.addEventListener('keypress', function(e) {
+            // Allow: backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (e.keyCode === 65 && e.ctrlKey === true) ||
+                (e.keyCode === 67 && e.ctrlKey === true) ||
+                (e.keyCode === 86 && e.ctrlKey === true) ||
+                (e.keyCode === 88 && e.ctrlKey === true)) {
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
+}
+
 function loadCartItems() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const orderItemsContainer = document.getElementById('orderItems');
     const subtotalElement = document.getElementById('subtotal');
     const totalElement = document.getElementById('total');
+    const payNowBtn = document.getElementById('payNowBtn');
     
     if (cart.length === 0) {
         orderItemsContainer.innerHTML = '<p>Your cart is empty</p>';
         subtotalElement.textContent = '₱ 0.00';
         totalElement.textContent = 'PHP ₱ 0.00';
+        
+        // Disable checkout button and show message
+        if (payNowBtn) {
+            payNowBtn.disabled = true;
+            payNowBtn.textContent = 'Cart is Empty';
+            payNowBtn.style.backgroundColor = '#ccc';
+            payNowBtn.style.cursor = 'not-allowed';
+            payNowBtn.style.opacity = '0.5';
+            payNowBtn.style.color = '#666';
+            payNowBtn.style.border = '1px solid #999';
+            payNowBtn.style.boxShadow = 'none';
+            payNowBtn.onclick = function(e) {
+                e.preventDefault();
+                showMessage('Please add items to your cart before proceeding to checkout.', 'error');
+                return false;
+            };
+        }
+        
+        // Show message to user
+        showMessage('Please add items to your cart before proceeding to checkout.', 'error');
         return;
+    }
+    
+    // Enable checkout button if cart has items
+    if (payNowBtn) {
+        payNowBtn.disabled = false;
+        payNowBtn.style.backgroundColor = '';
+        payNowBtn.style.cursor = 'pointer';
+        payNowBtn.style.opacity = '1';
+        payNowBtn.style.color = '';
+        payNowBtn.style.border = '';
+        payNowBtn.style.boxShadow = '';
+        payNowBtn.onclick = null; // Remove the prevent default handler
     }
     
     let subtotal = 0;

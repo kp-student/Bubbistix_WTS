@@ -18,7 +18,11 @@ function loadOrderData() {
     // Retrieve data
     const orderData = JSON.parse(localStorage.getItem('orderData')) || {};
     const discountAmount = parseFloat(localStorage.getItem('discountAmount')) || 0;
-    const items = orderData.items || JSON.parse(localStorage.getItem('cart')) || []; 
+    let items = orderData.items || JSON.parse(localStorage.getItem('cart')) || []; 
+    
+    console.log('Order Data:', orderData);
+    console.log('Items:', items);
+    console.log('Discount Amount:', discountAmount);
     
     // Retrieve HTML elements (CRITICAL STEP)
     const orderItemsContainer = document.getElementById('orderItems');
@@ -40,29 +44,45 @@ function loadOrderData() {
     // ---------------------------------
     
     if (items.length === 0) {
-        orderItemsContainer.innerHTML = '<p>No order items found. Please contact support.</p>';
-        subtotalElement.textContent = '₱ 0.00';
-        shippingElement.textContent = '₱ 0.00';
-        totalElement.textContent = '₱ 0.00';
-        return;
+        // Try to get items from cart as fallback
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        if (cartItems.length > 0) {
+            console.log('Using cart items as fallback:', cartItems);
+            items = cartItems;
+        } else {
+            orderItemsContainer.innerHTML = '<p>No order items found. Please contact support.</p>';
+            subtotalElement.textContent = '₱ 0.00';
+            shippingElement.textContent = '₱ 0.00';
+            totalElement.textContent = '₱ 0.00';
+            return;
+        }
     }
     
     let subtotal = 0;
     let itemsHTML = '';
     
-    items.forEach(item => {
+    items.forEach((item, index) => {
         // Ensure price is treated as a number
-        const itemTotal = parseFloat(item.price) * parseInt(item.quantity);
+        const itemPrice = parseFloat(item.price);
+        const itemQuantity = parseInt(item.quantity);
+        const itemTotal = itemPrice * itemQuantity;
         subtotal += itemTotal;
+        
+        console.log(`Item ${index + 1}:`, {
+            name: item.name,
+            price: itemPrice,
+            quantity: itemQuantity,
+            total: itemTotal
+        });
         
         itemsHTML += `
             <div class="order-item">
-                <img src="${item.image}" alt="${item.name}" class="item-image">
                 <div class="item-details">
                     <h4 class="item-name">${item.name}</h4>
-                    <p class="item-quantity">Quantity: ${item.quantity}</p>
+                    <p class="item-quantity">Quantity: ${itemQuantity}</p>
+                    <p class="item-price-per">₱${itemPrice.toFixed(2)} each</p>
                 </div>
-                <div class="item-price">₱${itemTotal.toFixed(2)}</div>
+                <div class="item-total">₱${itemTotal.toFixed(2)}</div>
             </div>
         `;
     });
@@ -73,6 +93,10 @@ function loadOrderData() {
     const shipping = 50.00;
     let finalTotal = subtotal + shipping;
     
+    console.log('Calculated subtotal:', subtotal);
+    console.log('Shipping:', shipping);
+    console.log('Final total before discount:', finalTotal);
+    
     // These lines should now work because we checked if the elements exist
     subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
     shippingElement.textContent = `₱${shipping.toFixed(2)}`;
@@ -80,6 +104,7 @@ function loadOrderData() {
     // Handle Discount
     if (discountAmount > 0 && totalContainer) { // Check if totalContainer is available for insertion
         finalTotal -= discountAmount;
+        console.log('Final total after discount:', finalTotal);
         
         // Create and insert the discount line
         const finalTotalLine = document.querySelector('.total-line.final-total');
@@ -101,6 +126,7 @@ function loadOrderData() {
     
     // Display Final Total
     totalElement.textContent = `₱${finalTotal.toFixed(2)}`;
+    console.log('Final total displayed:', totalElement.textContent);
 }
 
 function loadDeliveryInfo() {
@@ -254,24 +280,33 @@ function injectConfirmationStyles() {
         .order-item {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        .item-image {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-right: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
         }
         .item-details {
             flex-grow: 1;
+            margin-right: 15px;
         }
-        .item-price {
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .item-quantity, .item-price-per {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 3px;
+        }
+        .item-total {
             font-weight: bold;
             color: #49705b;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
     `;
     document.head.appendChild(style);
