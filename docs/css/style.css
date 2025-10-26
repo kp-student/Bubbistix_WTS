@@ -151,6 +151,9 @@ header {
     transform: translateX(100%); 
 }
 
+/**** Please refactor variable names to avoid overriding Navbar (Header) START HERE ****/
+
+/********
     .navbar {
         background: var(--powder-pink) !important;
         padding: 1rem 0;
@@ -241,6 +244,10 @@ header {
         transform: scale(1.1);
     }
 }
+********/
+/**** END HERE Please refactor variable names to avoid overriding Navbar (Header) ****/
+
+
 
 /* HERO SECTION */
 
@@ -1988,7 +1995,6 @@ footer {
         overflow-y: auto;
     }
     
-    /* The rest of your mobile styles here... */
     .container-fluid { padding: 0; }
     .logo-and-toggler-wrapper {
         background: var(--powder-pink);
@@ -2129,8 +2135,12 @@ footer {
         background: rgba(255, 255, 255, 0.95);
         border-radius: 10px;
     }
-    
+
+/**** Please refactor variable names to avoid overriding Navbar (Header) START HERE ****/
+
     /* Mobile navbar styles for order confirmation - only for mobile */
+    
+    /*****
     @media (max-width: 991px) {
         .navbar {
             background: var(--powder-pink) !important;
@@ -2208,7 +2218,10 @@ footer {
             margin: 0.5rem 0;
         }
     }
-    
+********/  
+
+/**** Please refactor variable names to avoid overriding Navbar (Header) END HERE ****/
+
     .checkout-left, .checkout-right {
         position: static;
         margin-bottom: 20px;
@@ -2412,8 +2425,8 @@ footer {
     box-shadow: none !important;
 }
     }
-}
 
+/** 
 @media (min-width: 992px) {
     .navbar {
         background: var(--powder-pink) !important;
