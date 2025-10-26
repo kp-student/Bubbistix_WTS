@@ -257,7 +257,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     text-align: center;
-    height: 35rem;
+    height: clamp(25rem, 50vh, 35rem);
     padding-bottom: 4rem;
     background: linear-gradient(to bottom, rgba(255, 192, 203, 0.3), transparent),
               url('../images/Welcome-Image/Home-Welcome Page.png') no-repeat center center;
@@ -337,7 +337,7 @@ header {
 
 .collection-title {
     font-family: 'Sugar-Flare'; 
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     color: var(--primary-pink);
     text-align: center;
     margin-bottom: 1rem;
@@ -346,12 +346,10 @@ header {
 }
 
 .collection-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
     margin: 2rem auto;
     max-width: 65rem;
-    justify-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .collection-card {
@@ -454,6 +452,7 @@ header {
     color: var(--powder-pink);
     letter-spacing: 2px;
     white-space: normal;
+    text-align: center;
 }
 
 .team-grid {
@@ -491,7 +490,7 @@ header {
 /* PROMO SECTION */
 
 .promo-container {
-    max-width: 700px;
+    max-width: 750px;
     margin: 0 auto;
 }
 
@@ -502,15 +501,16 @@ header {
 }
 
 .promo-container ul {
-    list-style: none;
-    padding-left: 2rem;
+    padding-left: 0; 
     margin-bottom: 1.5rem;
     text-align: left;
+    margin-top: 0;
 }
 
 .promo-container ul li {
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.5; 
     color: white;
 }
 
@@ -2010,19 +2010,86 @@ footer {
     .nav-link { padding: 0.5rem 0; display: block; }
 }
 
-/* Max Width 768px (Tablet Portrait and smaller) */
-@media (max-width: 768px) {
+/* MEDIUM SCREEN SIZE (TABLET PORTRAIT, PHONE LANDSCAPE) */
+@media (max-width: 480px) {
+    .container, 
+    .container-fluid {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100%;
+        width: 100%;
+    }
+
     .hero {
         height: 25rem;
         background-position: center top;
         padding-bottom: 2rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero a.squishy-btn {
+        transform: translateY(40px) !important; 
     }
 
+    .collections {
+        padding: 1rem 0.25rem !important; 
+        text-align: center;
+    }
+
+    .collection-card {
+        width: 100%;
+        max-width: none;
+    }
+
+    .collection-title, .promo-header {
+        font-size: 2.5rem;
+        margin-bottom: 1rem !important;
+    }
     .collection-grid {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         grid-template-columns: 1fr; 
         max-width: 30rem; 
     }
 
+    .promo.py-5 {
+        padding: 2rem 1.5rem; 
+    }
+
+    .promo-subtitle {
+        font-size: 1.75rem !important;
+        text-align: center !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .promo-header {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .promo-container p {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .promo-container ul {
+        margin-bottom: 1rem; 
+        font-size: 0.9rem;
+    }
+
+    .promo-container .lead {
+        font-size: 1.2rem; 
+        line-height: 1.5; 
+    }
+    
+    .promo-container p.mb-5 {
+        font-size: 1rem;
+        margin-bottom: 1.5rem !important; 
+    }
+    
     .cart-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -2424,7 +2491,7 @@ footer {
     border: 1px solid #999 !important;
     box-shadow: none !important;
 }
-    }
+    
 
 /** 
 @media (min-width: 992px) {
@@ -2515,8 +2582,88 @@ footer {
     }
 }
 
-/* Max Width 575px (Smallest Phones) */
-@media (max-width: 575px) {
+/* Max Width 320px (Smallest Phones) */
+@media (max-width: 320px) {
+    .container, 
+    .container-fluid {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .hero {
+        height: 15rem;
+        background-position: center top;
+        padding-bottom: 2rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero a.squishy-btn {
+        transform: translateY(47px) !important; 
+    }
+
+    .collections {
+        padding: 1rem 0.25rem !important; 
+        text-align: center;
+    }
+    .collection-title {
+        text-align: center !important;
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem !important;
+        letter-spacing: 1px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .collection-grid {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .collection-card {
+        padding: 1.5rem;
+    }
+
+    .promo.py-5 {
+        padding: 2rem 1rem; 
+    }
+
+    .promo-header {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .promo-subtitle {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.25rem;
+    }
+
+    .promo-container p {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .promo-container ul {
+        margin-bottom: 1rem; 
+        font-size: 0.75rem;
+    }
+
+    .promo-container .lead {
+        font-size: 0.9rem; 
+        line-height: 1.4; 
+    }
+
+    .promo-container .lead.mb-3 {
+        margin-bottom: 0.5rem !important; 
+    }
+    
+    .promo-container p.mb-5 {
+        margin-bottom: 1.5rem !important; 
+    }
+
     .checkout-main {
         padding: 0 !important;
         margin: 0 !important;
@@ -2755,7 +2902,7 @@ footer {
     }
     .nav-links { flex-direction: row !important; justify-content: center !important; }
     
-    .team , .promo {
+    .team {
         padding: 3rem 6rem;
     }
 
@@ -2900,6 +3047,7 @@ footer {
         margin-bottom: 2px !important;
     }
 }
+
 @media (max-width: 575px) {
     .info-label,
     .info-row,
@@ -2924,4 +3072,4 @@ footer {
         text-align: left !important;
         width: 100% !important;
     }
-}
+} }
