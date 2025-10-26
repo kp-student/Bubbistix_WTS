@@ -119,6 +119,7 @@ header {
     transition: color 0.3s ease;
     text-decoration: none;
 }
+
 .nav-link:hover, .nav-link.active { color: var(--leafy-green) !important; }
 .nav-icon { width: 25px; height: 25px; vertical-align: middle; font-weight: bold; stroke-width: 5px; transition: all 0.3s ease; }
 .nav-icon:hover { transform: scale(1.05); }
@@ -133,11 +134,13 @@ header {
     width: 2.5em; height: 35px; z-index: 100; cursor: pointer;
     display: flex; flex-direction: column; justify-content: center;
 }
+
 .hamburger div {
     position: relative; width: 100%; height: 4px; border-radius: 3px;
     background-color: var(--bubblegum-pink); 
     margin-top: 6px; transition: all 0.3s ease-in-out;
 }
+
 .hamburger div:first-child { margin-top: 0; }
 
 #navbarNav {
@@ -150,103 +153,6 @@ header {
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%); 
 }
-
-/**** Please refactor variable names to avoid overriding Navbar (Header) START HERE ****/
-
-/********
-    .navbar {
-        background: var(--powder-pink) !important;
-        padding: 1rem 0;
-    }
-    
-    .container-fluid {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
-    .logo-and-toggler-wrapper {
-        display: flex !important;
-        align-items: center;
-        margin-right: 2rem;
-    }
-    
-    .logo {
-        height: 80px;
-        margin-bottom: 0;
-    }
-    
-    .hamburger {
-        display: none !important;
-    }
-    
-    #navbarNav {
-        display: block !important;
-        visibility: visible !important;
-        position: static !important;
-        transform: none !important;
-        background: transparent !important;
-        height: auto !important;
-        width: auto !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        top: auto !important;
-        left: auto !important;
-        z-index: auto !important;
-        overflow: visible !important;
-        flex: 1;
-    }
-    
-    .nav-links {
-        flex-direction: row !important;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        display: flex !important;
-    }
-    
-    .nav-item {
-        display: inline-block !important;
-        margin: 0;
-    }
-    
-    .nav-link {
-        color: var(--primary-pink) !important;
-        font-weight: 600;
-        padding: 0.5rem 1rem;
-        display: inline-block;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        font-size: 1rem;
-    }
-    
-    .nav-link:hover {
-        color: var(--leafy-green) !important;
-    }
-    
-    .nav-link.active {
-        color: var(--leafy-green) !important;
-    }
-    
-    .nav-icon {
-        width: 24px;
-        height: 24px;
-        transition: transform 0.3s ease;
-    }
-    
-    .nav-icon:hover {
-        transform: scale(1.1);
-    }
-}
-********/
-/**** END HERE Please refactor variable names to avoid overriding Navbar (Header) ****/
-
 
 
 /* HERO SECTION */
@@ -1962,7 +1868,6 @@ footer {
 }
 
 /* RESPONSIVE DESIGN */
-/* MOBILE/TABLET VIEW - Animation Selector Fix */
 
 @media (max-width: 991.98px) {
     
@@ -2203,92 +2108,6 @@ footer {
         border-radius: 10px;
     }
 
-/**** Please refactor variable names to avoid overriding Navbar (Header) START HERE ****/
-
-    /* Mobile navbar styles for order confirmation - only for mobile */
-    
-    /*****
-    @media (max-width: 991px) {
-        .navbar {
-            background: var(--powder-pink) !important;
-            padding: 0.5rem 0;
-        }
-        
-        .logo-and-toggler-wrapper {
-            display: flex !important;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 1rem;
-        }
-        
-        .logo {
-            height: 60px;
-            margin-bottom: 0;
-        }
-        
-        .hamburger {
-            display: block;
-        }
-        
-        #navbarNav {
-            display: block !important;
-            visibility: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-color: var(--powder-pink);
-            top: 0;
-            left: 0;
-            z-index: 90;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            padding-top: 4rem;
-        }
-        
-        #nav-toggle:checked ~ #navbarNav {
-            visibility: visible;
-            transform: translateX(0);
-        }
-        
-        .nav-links {
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 1rem;
-            padding: 2rem 0;
-            margin: 0;
-            list-style: none;
-        }
-        
-        .nav-item {
-            display: block !important;
-            margin: 0.5rem 0;
-        }
-        
-        .nav-link {
-            color: var(--primary-pink) !important;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            display: block;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--leafy-green) !important;
-        }
-        
-        .nav-icon {
-            width: 28px;
-            height: 28px;
-            margin: 0.5rem 0;
-        }
-    }
-********/  
-
-/**** Please refactor variable names to avoid overriding Navbar (Header) END HERE ****/
-
     .checkout-left, .checkout-right {
         position: static;
         margin-bottom: 20px;
@@ -2491,9 +2310,8 @@ footer {
     border: 1px solid #999 !important;
     box-shadow: none !important;
 }
-    
+}   
 
-/** 
 @media (min-width: 992px) {
     .navbar {
         background: var(--powder-pink) !important;
@@ -2560,7 +2378,7 @@ footer {
         display: inline-block;
         text-decoration: none;
         transition: color 0.3s ease;
-        font-size: 1rem;
+        font-size: 1.5rem;
     }
     
     .nav-link:hover {
@@ -3072,4 +2890,4 @@ footer {
         text-align: left !important;
         width: 100% !important;
     }
-} }
+} 
