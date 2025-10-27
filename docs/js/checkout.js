@@ -1,5 +1,6 @@
 // Checkout page functionality
-document.addEventListener('DOMContentLoaded', function() {
+// ES6 + accessibility refactor: arrow handlers, const/let, and clearer docs.
+document.addEventListener('DOMContentLoaded', () => {
     // Check if cart is empty and redirect if necessary
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (cart.length === 0) {
@@ -83,16 +84,33 @@ function initializePaymentMethods() {
 
 function initializeFormValidation() {
     const payNowBtn = document.getElementById('payNowBtn');
-    
+
     payNowBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        
-        // This is the CRITICAL line: If validation fails, processPayment() is skipped.
-        if (validateForm()) {
-            processPayment();
-        } else {
-            // Show a persistent error message if validation fails
+
+        // If validation fails, skip processing and show errors
+        if (!validateForm()) {
             showMessage('Please correct the highlighted fields before proceeding.', 'error');
+            return;
+        }
+
+        // Show confirmation modal before processing payment
+        const modalEl = document.getElementById('confirmPaymentModal');
+        if (modalEl) {
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+
+            const confirmBtn = document.getElementById('confirmPayBtn');
+            if (confirmBtn) {
+                // Avoid multiple bindings
+                confirmBtn.onclick = () => {
+                    modal.hide();
+                    processPayment();
+                };
+            }
+        } else {
+            // Fallback if modal is somehow missing
+            processPayment();
         }
     });
 }
@@ -234,7 +252,8 @@ function initializeCreditCardValidation() {
     
     // Expiry Date Validation
     if (expiryDateInput) {
-        expiryDateInput.addEventListener('input', function(e) {
+        // Normalize input to MM/YY while typing
+        expiryDateInput.addEventListener('input', (e) => {
             // Remove any non-numeric characters
             this.value = this.value.replace(/[^0-9]/g, '');
             
@@ -249,7 +268,8 @@ function initializeCreditCardValidation() {
             }
         });
         
-        expiryDateInput.addEventListener('keypress', function(e) {
+        // Restrict keys to digits and common control keys
+        expiryDateInput.addEventListener('keypress', (e) => {
             // Allow: backspace, delete, tab, escape, enter
             if ([8, 9, 27, 13, 46].indexOf(e.keyCode) !== -1 ||
                 // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X

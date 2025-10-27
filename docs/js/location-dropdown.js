@@ -26,7 +26,8 @@ const philippineLocations = {
 };
 
 // Initialize dropdown functionality when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+// ES6 + maintainability: arrow init and event handlers with explicit targets
+document.addEventListener('DOMContentLoaded', () => {
   const islandSelect = document.getElementById('island-select');
   const regionSelect = document.getElementById('region-select');
   const provinceSelect = document.getElementById('province-select');
@@ -77,14 +78,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Event listeners for cascading dropdowns
-  islandSelect.addEventListener('change', function() {
-    const selectedIsland = this.value;
+  // Island -> Region cascade
+  islandSelect.addEventListener('change', (e) => {
+    const selectedIsland = e.currentTarget.value;
     populateRegionDropdown(selectedIsland);
   });
 
-  regionSelect.addEventListener('change', function() {
+  // Region -> Province cascade
+  regionSelect.addEventListener('change', (e) => {
     const selectedIsland = islandSelect.value;
-    const selectedRegion = this.value;
+    const selectedRegion = e.currentTarget.value;
     populateProvinceDropdown(selectedIsland, selectedRegion);
   });
 

@@ -1,5 +1,6 @@
 // Order Confirmation Page functionality
-document.addEventListener('DOMContentLoaded', function() {
+// ES6 + maintainability: arrow init, reduced debug logging
+document.addEventListener('DOMContentLoaded', () => {
     // Inject the CSS styles you provided earlier (necessary for display)
     injectConfirmationStyles();
 
@@ -20,9 +21,7 @@ function loadOrderData() {
     const discountAmount = parseFloat(localStorage.getItem('discountAmount')) || 0;
     let items = orderData.items || JSON.parse(localStorage.getItem('cart')) || []; 
     
-    console.log('Order Data:', orderData);
-    console.log('Items:', items);
-    console.log('Discount Amount:', discountAmount);
+    // Data loaded from localStorage; no verbose logging in production
     
     // Retrieve HTML elements (CRITICAL STEP)
     const orderItemsContainer = document.getElementById('orderItems');
@@ -47,7 +46,7 @@ function loadOrderData() {
         // Try to get items from cart as fallback
         const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
         if (cartItems.length > 0) {
-            console.log('Using cart items as fallback:', cartItems);
+            // Use cart items as a graceful fallback
             items = cartItems;
         } else {
             orderItemsContainer.innerHTML = '<p>No order items found. Please contact support.</p>';
@@ -68,12 +67,7 @@ function loadOrderData() {
         const itemTotal = itemPrice * itemQuantity;
         subtotal += itemTotal;
         
-        console.log(`Item ${index + 1}:`, {
-            name: item.name,
-            price: itemPrice,
-            quantity: itemQuantity,
-            total: itemTotal
-        });
+        // Build item row output
         
         itemsHTML += `
             <div class="order-item">
@@ -93,9 +87,7 @@ function loadOrderData() {
     const shipping = 50.00;
     let finalTotal = subtotal + shipping;
     
-    console.log('Calculated subtotal:', subtotal);
-    console.log('Shipping:', shipping);
-    console.log('Final total before discount:', finalTotal);
+    // Totals computed; display below
     
     // These lines should now work because we checked if the elements exist
     subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
@@ -104,7 +96,7 @@ function loadOrderData() {
     // Handle Discount
     if (discountAmount > 0 && totalContainer) { // Check if totalContainer is available for insertion
         finalTotal -= discountAmount;
-        console.log('Final total after discount:', finalTotal);
+        // Discount applied visually and to computed total
         
         // Create and insert the discount line
         const finalTotalLine = document.querySelector('.total-line.final-total');
@@ -126,7 +118,7 @@ function loadOrderData() {
     
     // Display Final Total
     totalElement.textContent = `₱${finalTotal.toFixed(2)}`;
-    console.log('Final total displayed:', totalElement.textContent);
+    // Final total rendered
 }
 
 function loadDeliveryInfo() {

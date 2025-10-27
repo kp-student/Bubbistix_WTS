@@ -709,6 +709,21 @@ button:hover {
     z-index: 1000;
 }
 
+/* Accessible focus outlines for key interactive elements */
+.login-form input:focus,
+.login-form button:focus,
+.footer-subscribe input:focus,
+.footer-subscribe button:focus {
+  outline: 2px solid #49705b;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* Inline error spacing for helper text */
+.input-group .form-text {
+  margin-top: 0.25rem;
+}
+
 /* Ensure success popups remain hidden when the hidden class is applied */
 .success-popup.hidden {
     display: none;
@@ -2912,4 +2927,67 @@ footer {
         text-align: left !important;
         width: 100% !important;
     }
+}
+/* Checkout confirmation modal: align with other popups (font, spacing, colors) */
+.brand-modal {
+  border: 2px solid #E6536D;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.brand-modal .modal-header {
+  border-bottom: 1px solid #eee;
+}
+
+.brand-modal .modal-title {
+  color: #E6536D;
+  font-family: 'Cute-Sunrise', cursive;
+  font-size: 1.25rem;
+}
+
+.brand-modal .modal-body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.brand-modal .modal-footer {
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem; /* comfortable spacing between buttons */
+  flex-wrap: nowrap; /* keep buttons on one line */
+}
+
+.brand-modal .modal-footer .btn {
+  min-width: 160px;
+  border-radius: 10px;
+  font-weight: 600;
+  white-space: nowrap; /* prevent wrapping, e.g., "Confirm & Pay" */
+  flex: 0 0 auto;
+}
+
+/* Brand button colors for modal actions */
+.brand-modal .btn-success {
+  background-color: #49705B;
+  border-color: #49705B;
+}
+.brand-modal .btn-success:hover {
+  background-color: #3e5f4f;
+  border-color: #3e5f4f;
+}
+
+.brand-modal .btn-danger {
+  background-color: #E6536D;
+  border-color: #E6536D;
+}
+.brand-modal .btn-danger:hover {
+  background-color: #d64760;
+  border-color: #d64760;
+}
+
+/* Subtle blur backdrop to match other popups */
+.modal-backdrop.show {
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.25);
 }

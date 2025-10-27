@@ -1,9 +1,15 @@
-// Helper to save cart to localStorage
+/**
+ * Persist cart to localStorage.
+ * @param {Array<Object>} cart - Current cart items
+ */
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Remove item from cart
+/**
+ * Remove an item from the cart by button context.
+ * @param {HTMLButtonElement} button
+ */
 function removeItem(button) {
   const itemName = button.closest('.cart-item').dataset.name;
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -12,11 +18,15 @@ function removeItem(button) {
   renderCart();
 }
 
-// Update quantity with validation
+/**
+ * Update item quantity (+/-) ensuring minimum of 1.
+ * @param {HTMLButtonElement} button
+ * @param {number} change - Quantity delta (+1 or -1)
+ */
 function updateQuantity(button, change) {
   const itemName = button.closest('.cart-item').dataset.name;
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  let item = cart.find(i => i.name === itemName);
+  const item = cart.find(i => i.name === itemName);
   if (!item) return;
 
   // Update item quantity and ensure it's at least 1
@@ -32,13 +42,17 @@ function updateQuantity(button, change) {
 
 // Handle manual quantity input changes with debounce
 let inputTimeout;
+/**
+ * Debounced quantity input update for a cart item.
+ * @param {HTMLInputElement} input
+ */
 function onQuantityInputChange(input) {
   clearTimeout(inputTimeout);
   inputTimeout = setTimeout(() => {
-    const newQuantity = Math.max(1, parseInt(input.value)) || 1;
+    const newQuantity = Math.max(1, Number.parseInt(input.value)) || 1;
     const itemName = input.closest('.cart-item').dataset.name;
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let item = cart.find(i => i.name === itemName);
+    const item = cart.find(i => i.name === itemName);
     if (!item) return;
     item.quantity = newQuantity;
     saveCart(cart);
@@ -46,7 +60,9 @@ function onQuantityInputChange(input) {
   }, 500);
 }
 
-// Render cart items and total
+/**
+ * Render cart UI and totals.
+ */
 function renderCart() {
   const cartItemsContainer = document.getElementById('cart-items');
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
