@@ -60,7 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
         title: '🎉 Message sent!',
         message: 'Thanks for reaching out — your note is on its way to our inbox 💌',
         autohide: true,
-        delay: 3000
+        delay: 3000,
+        position: 'center',
+        size: 'xl',
+        backdrop: 'blur'
       });
     });
     return; // Skip legacy popup path when toast is available

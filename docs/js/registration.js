@@ -15,9 +15,12 @@ document.querySelector('.login-form').addEventListener('submit', (e) => {
   if (canToast) {
     window.bubbistixUI.showToast({
       title: "You're now signed in",
-      message: 'Redirecting to your dashboard…',
+      message: 'Redirecting to your dashboard',
       autohide: true,
-      delay: 1500
+      delay: 1500,
+      position: 'center',
+      size: 'xl',
+      backdrop: 'blur'
     });
   } else {
     // Fallback to legacy success popup

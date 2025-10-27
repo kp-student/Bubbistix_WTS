@@ -1003,6 +1003,86 @@ button:hover {
 }
 
 /* Bootstrap Toast Branding (non-invasive) */
+/* Size and appearance tweaks for branded toasts */
+.toast.brand-toast {
+  min-width: 320px;
+  max-width: 420px;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+.toast.brand-toast.toast-lg {
+  min-width: 380px;
+  max-width: 520px;
+}
+
+/* Extra-large centered toast for key flows */
+.toast.brand-toast.toast-xl {
+  min-width: 520px;
+  max-width: 640px;
+}
+
+.toast.brand-toast .toast-body {
+  line-height: 1.5;
+}
+
+/* Readability: larger title and body for CENTERED toasts only (Sign In, Create Account, Contact, Newsletter) */
+#toastContainerCenter .toast.brand-toast .toast-header .toast-title,
+#toastContainerCenter .toast.brand-toast .toast-header strong.toast-title {
+  font-size: 1.25rem; /* slightly larger than body */
+  line-height: 1.35;
+}
+
+#toastContainerCenter .toast.brand-toast .toast-body {
+  font-size: 1.1rem; /* increased body size for readability */
+}
+
+@media (max-width: 480px) {
+  #toastContainerCenter .toast.brand-toast .toast-header .toast-title,
+  #toastContainerCenter .toast.brand-toast .toast-header strong.toast-title {
+    font-size: 1.15rem;
+  }
+  #toastContainerCenter .toast.brand-toast .toast-body {
+    font-size: 1rem;
+  }
+}
+
+/* Make top-right add-to-cart toast use the same readable sizes */
+#toastContainerTopRight .toast.brand-toast .toast-header .toast-title,
+#toastContainerTopRight .toast.brand-toast .toast-header strong.toast-title {
+  font-size: 1.25rem; /* match center toast title size */
+  line-height: 1.35;
+}
+
+#toastContainerTopRight .toast.brand-toast .toast-body {
+  font-size: 1.1rem; /* match center toast body size */
+}
+
+@media (max-width: 480px) {
+  #toastContainerTopRight .toast.brand-toast .toast-header .toast-title,
+  #toastContainerTopRight .toast.brand-toast .toast-header strong.toast-title {
+    font-size: 1.15rem;
+  }
+  #toastContainerTopRight .toast.brand-toast .toast-body {
+    font-size: 1rem;
+  }
+}
+
+/* Backdrop overlay to highlight toasts */
+.toast-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1075;
+}
+
+.toast-backdrop.toast-backdrop--light {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.toast-backdrop.toast-backdrop--blur {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+}
 .bubbistix-toast-header .toast-title {
     font-family: 'Cute-Sunrise', cursive;
     color: #E6536D;

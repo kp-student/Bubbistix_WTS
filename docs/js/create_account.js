@@ -5,14 +5,17 @@ document.getElementById('createAccountForm').addEventListener('submit', (e) => {
 
   if (canToast) {
     window.bubbistixUI.showToast({
-      title: 'Account Created',
-      message: 'Please sign in ❤',
+      title: 'Account successfully created!',
+      message: 'Please sign in. Redirecting you to the sign-in page.',
       autohide: true,
-      delay: 1200
+      delay: 2000,
+      position: 'center',
+      size: 'xl',
+      backdrop: 'blur'
     });
     setTimeout(() => {
       window.location.href = 'registration.html';
-    }, 1200);
+    }, 2000);
   } else {
     // Fallback to legacy popup
     document.getElementById('successPopup').style.display = 'flex';

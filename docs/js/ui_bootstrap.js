@@ -40,12 +40,27 @@
   };
 
   // Show a branded toast using Bootstrap's JavaScript API
-  // Example: showToast({ title: 'Added to Cart', message: 'Item added!', autohide: true, delay: 3000 })
-  const showToast = ({ title = 'Notification', message = '', autohide = true, delay = 3000, position = 'center' } = {}) => {
+  // Example: showToast({ title: 'Added to Cart', message: 'Item added!', autohide: true, delay: 3000, position: 'top-right', size: 'lg', backdrop: 'blur' })
+  const showToast = ({ title = 'Notification', message = '', autohide = true, delay = 3000, position = 'top-right', size = 'md', backdrop = false } = {}) => {
     const container = ensureToastContainer(position);
 
+    // Optional backdrop overlay (light or blur)
+    let backdropEl = null;
+    if (backdrop) {
+      backdropEl = document.getElementById('bubbistix-toast-backdrop');
+      if (!backdropEl) {
+        backdropEl = document.createElement('div');
+        backdropEl.id = 'bubbistix-toast-backdrop';
+        backdropEl.className = 'toast-backdrop';
+        if (backdrop === 'light') backdropEl.classList.add('toast-backdrop--light');
+        if (backdrop === 'blur') backdropEl.classList.add('toast-backdrop--blur');
+        document.body.appendChild(backdropEl);
+      }
+    }
+
     const toastEl = document.createElement('div');
-    toastEl.className = 'toast';
+    const sizeClass = size === 'lg' ? 'toast-lg' : (size === 'xl' ? 'toast-xl' : '');
+    toastEl.className = `toast brand-toast ${sizeClass}`.trim();
     toastEl.setAttribute('role', 'status');
     toastEl.setAttribute('aria-live', 'polite');
     toastEl.setAttribute('aria-atomic', 'true');
@@ -73,6 +88,8 @@
     // Cleanup after hidden to avoid DOM bloat
     toastEl.addEventListener('hidden.bs.toast', () => {
       toastEl.remove();
+      const existingBackdrop = document.getElementById('bubbistix-toast-backdrop');
+      if (existingBackdrop) existingBackdrop.remove();
     });
   };
 

@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         title: '🎉 You’re in!',
         message: 'Thanks for joining our list — get ready for sweet deals, happy news, and maybe a little sparkle in your inbox soon! ✨💌',
         autohide: true,
-        delay: 3000
+        delay: 3000,
+        position: 'center',
+        size: 'xl',
+        backdrop: 'blur'
       });
     });
     return; // Skip legacy popup injection when toast is available
