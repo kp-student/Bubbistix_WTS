@@ -8,6 +8,7 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 ## 🍭 Table of Contents
 
 * [About](#about)
+* []
 * [Features](#features)
 * [Site Map (Pages)](#site-map-pages)
 * [Project Structure](#project-structure)
@@ -26,6 +27,15 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 **Bubbistix** is a colorful and interactive online sticker shop created for the course **Web Systems and Technologies (H3101)**.
 
 This project showcases a **front-end only implementation** using pure HTML, CSS, and JavaScript — no frameworks, no build tools. It’s a light, fun, and accessible web experience designed to make visitors smile. 🌈
+
+---
+
+## 🗓️ Project Timeline
+
+Our team used a collaborative Gantt Chart to plan, track, and manage development milestones throughout the project.
+Click the link below to view the full timeline and task allocations:
+
+[📎Bubbistix Gantt Chart](https://docs.google.com/spreadsheets/d/1D6_VP1bb8cWHZVsHzA12i7U7oXfdUuCQyEdo1N9Jtbc/edit?usp=sharing)
 
 ---
 
@@ -79,21 +89,28 @@ All supporting pages are stored in the **`/docs/html`** folder:
 .
 ├── docs/
 │   ├── css/
-│   │   └── style.css                 # Global styling
+│   │   └── style.css                 # Global stylesheet (colors, layout, animations)
+│   │
+│   ├── data/
+│   │   └── inventory.json            # Centralized product inventory data for the shop page
+│   │
 │   ├── fonts/                        # Local font files (.otf / .ttf)
 │   │   ├── Adelia-Font.otf
 │   │   ├── Cute-Sunrise.otf
 │   │   ├── Lucid-Dream.otf
 │   │   ├── Milkyway-Font.ttf
 │   │   └── Sugar-Flare.otf
-│   ├── html/                         # All subpages
-│   ├── images/                       # Project images and graphics
+│   │
+│   ├── html/                         # All subpages (About, Shop, Cart, FAQs, etc.)
+│   │
+│   ├── images/                       # Project assets and visuals
 │   │   ├── logo/
 │   │   ├── misc/
 │   │   ├── stickers/
 │   │   ├── team/
 │   │   └── Welcome-Image/
-│   ├── js/                           # JavaScript interactivity scripts
+│   │
+│   ├── js/                           # JavaScript logic and interactivity scripts
 │   │   ├── checkout.js
 │   │   ├── contact-success.js
 │   │   ├── create_account.js
@@ -105,13 +122,15 @@ All supporting pages are stored in the **`/docs/html`** folder:
 │   │   ├── reset_password.js
 │   │   ├── script_cart.js
 │   │   └── script_shop.js
+│   │
 │   ├── add-to-cart-popup.png
 │   ├── hero_bg.jpg
 │   ├── mock_about.png
 │   ├── strawberry1.png → strawberry5.png
 │   └── README.md
-├── index.html                        # Homepage
-└── README.md                         # Documentation
+│
+├── index.html                        # Homepage entry point
+└── README.md                         # Project documentation
 ```
 
 ---
@@ -182,10 +201,10 @@ Want to make Bubbistix even better? We’d love that!
 
 ## 🌸 Our Team
 
-* Kristine Paul Garcia 🌙
-* Mara Julienne Rose Cervantes 🌟
-* Lianne Marie Dioso ✨
-* Michelle Joi Quesada 💫
+* Kristine Paul Garcia — Front-end Lead & Project Manager 🌙
+* Mara Julienne Rose Cervantes — Front-end, Logic Developer, & Graphic Design 🌟
+* Lianne Marie Dioso — Quality Assurance & Graphic Design ✨
+* Michelle Joi Quesada — Quality Assurance & Graphic Design 💫
 
 ---
 
