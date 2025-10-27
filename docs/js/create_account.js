@@ -13,16 +13,12 @@ document.getElementById('createAccountForm').addEventListener('submit', (e) => {
       size: 'xl',
       backdrop: 'blur'
     });
-    setTimeout(() => {
-      window.location.href = 'registration.html';
-    }, 2000);
-  } else {
-    // Fallback to legacy popup
-    document.getElementById('successPopup').style.display = 'flex';
   }
+
+  // Redirect after delay regardless of toast availability
+  setTimeout(() => {
+    window.location.href = 'registration.html';
+  }, 2000);
 });
 
-// Function to go to login page
-function goToLogin() {
-  window.location.href = 'registration.html';
-}
+// Removed legacy goToLogin and popup fallback; relying on toast + timed redirect

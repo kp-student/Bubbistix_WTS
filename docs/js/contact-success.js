@@ -13,7 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
     ? '../images/strawberry5.png'
     : 'docs/images/strawberry5.png';
 
-  // Inject popup markup once
+  if (canToast) {
+    // Use toast for success feedback; keep focus accessible
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactForm.reset();
+      window.bubbistixUI.showToast({
+        title: '🎉 Message sent!',
+        message: 'Thanks for reaching out — your note is on its way to our inbox 💌',
+        autohide: true,
+        delay: 3000,
+        position: 'center',
+        size: 'xl',
+        backdrop: 'blur'
+      });
+    });
+    return; // Skip legacy popup path when toast is available
+  }
+
+  // Fallback: Inject legacy popup markup and styles only when toast isn't available
   if (!document.getElementById('contactPopup')) {
     const popup = document.createElement('div');
     popup.id = 'contactPopup';
@@ -30,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.body.appendChild(popup);
 
-    // Inject scoped styles to match newsletter popup sizing
     const styleId = 'contactPopupStyle';
     if (!document.getElementById(styleId)) {
       const style = document.createElement('style');
@@ -50,24 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const popupEl = document.getElementById('contactPopup');
-
-  if (canToast) {
-    // Use toast for success feedback; keep focus accessible
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      contactForm.reset();
-      window.bubbistixUI.showToast({
-        title: '🎉 Message sent!',
-        message: 'Thanks for reaching out — your note is on its way to our inbox 💌',
-        autohide: true,
-        delay: 3000,
-        position: 'center',
-        size: 'xl',
-        backdrop: 'blur'
-      });
-    });
-    return; // Skip legacy popup path when toast is available
-  }
 
   // Fallback: Legacy popup behavior
   contactForm.addEventListener('submit', (e) => {

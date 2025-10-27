@@ -193,7 +193,7 @@ function addToCart(name, image, price) {
 }
 
 const showAddToCartPopup = (productName) => {
-  // Prefer Bootstrap toast via helper; fallback to legacy popup to avoid breaking behavior
+  // Use Bootstrap toast via helper
   if (window.bubbistixUI && typeof window.bubbistixUI.showToast === 'function') {
     window.bubbistixUI.showToast({
       title: 'Added to Cart',
@@ -202,23 +202,8 @@ const showAddToCartPopup = (productName) => {
       delay: 3000,
       position: 'top-right'
     });
-    return;
   }
-
-  // Legacy popup fallback
-  const popup = document.getElementById('add-to-cart-popup');
-  const popupText = document.getElementById('popup-text');
-  popupText.textContent = `${productName} has been added to your cart!`;
-  popup.style.display = 'flex';
-  setTimeout(() => {
-    closeAddToCartPopup();
-  }, 3000);
 };
-
-function closeAddToCartPopup() {
-  const popup = document.getElementById('add-to-cart-popup');
-  popup.style.display = 'none';
-}
 
 // Application Entry Point: Starts the data fetching process
 initializeShop();

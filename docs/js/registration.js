@@ -22,9 +22,6 @@ document.querySelector('.login-form').addEventListener('submit', (e) => {
       size: 'xl',
       backdrop: 'blur'
     });
-  } else {
-    // Fallback to legacy success popup
-    document.getElementById('loginSuccessPopup').style.display = 'flex';
   }
 
   // Auto redirect to home after sign-in
