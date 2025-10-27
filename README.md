@@ -8,7 +8,6 @@ Stickers that sprinkle joy and whimsy on your everyday items!
 ## 🍭 Table of Contents
 
 * [About](#about)
-* []
 * [Features](#features)
 * [Site Map (Pages)](#site-map-pages)
 * [Project Structure](#project-structure)
@@ -35,7 +34,7 @@ This project showcases a **front-end only implementation** using pure HTML, CSS,
 Our team used a collaborative Gantt Chart to plan, track, and manage development milestones throughout the project.
 Click the link below to view the full timeline and task allocations:
 
-[📎Bubbistix Gantt Chart](https://docs.google.com/spreadsheets/d/1D6_VP1bb8cWHZVsHzA12i7U7oXfdUuCQyEdo1N9Jtbc/edit?usp=sharing)
+[👉Bubbistix Gantt Chart👈](https://docs.google.com/spreadsheets/d/1D6_VP1bb8cWHZVsHzA12i7U7oXfdUuCQyEdo1N9Jtbc/edit?usp=sharing)
 
 ---
 
@@ -159,19 +158,21 @@ Make sure to maintain the directory structure for all paths to load correctly!
 
 ## 💡 JavaScript Overview
 
-| File                    | Functionality                                                          |
-| ----------------------- | ---------------------------------------------------------------------- |
-| `checkout.js`           | Handles checkout form validation and order summary logic.              |
-| `contact-success.js`    | Displays success messages after contact form submission.               |
-| `create_account.js`     | Manages account creation UI responses and validation.                  |
-| `FAQs.js`               | Expands/collapses FAQ sections for smooth user navigation.             |
-| `location-dropdown.js`  | Controls dynamic dropdowns for shipping or address fields.             |
-| `newsletter.js`         | Validates and confirms newsletter subscriptions.                       |
-| `order-confirmation.js` | Displays final purchase confirmation details.                          |
-| `registration.js`       | Handles login/registration form UI logic.                              |
-| `reset_password.js`     | Enables password reset input and confirmation flow.                    |
-| `script_cart.js`        | Manages add-to-cart functionality, quantity updates, and item removal. |
-| `script_shop.js`        | Controls sticker filtering, sorting, and product display logic.        |
+| File                    | Functionality                                                                              |
+| ----------------------- | ------------------------------------------------------------------------------------------ |
+| `checkout.js`           | Handles checkout form validation and order summary logic.                                  |
+| `contact-success.js`    | Displays success messages after contact form submission.                                   |
+| `create_account.js`     | Manages account creation UI responses and validation.                                      |
+| `FAQs.js`               | Expands/collapses FAQ sections for smooth user navigation.                                 |
+| `location-dropdown.js`  | Controls dynamic dropdowns for shipping or address fields.                                 |
+| `newsletter.js`         | Validates and confirms newsletter subscriptions.                                           |
+| `order-confirmation.js` | Displays final purchase confirmation details.                                              |
+| `registration.js`       | Handles login/registration form UI logic.                                                  |
+| `reset_password.js`     | Enables password reset input and confirmation flow.                                        |
+| `script_cart.js`        | Manages add-to-cart functionality, quantity updates, and item removal.                     |
+| `script_shop.js`        | Controls sticker filtering, sorting, and product display logic from inventory.json.        |
+| `ui_bootstrap.js`       | Enables accessible Bootstrap toasts with customizable message, position, size, etc.        |
+| `validation.js`         | Provides lightweight form validation with inline error messages and ARIA support.          |
 
 ---
 
