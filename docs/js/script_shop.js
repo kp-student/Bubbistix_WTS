@@ -10,6 +10,15 @@ let products = [];
 // Function to fetch data from JSON file and initialize the shop
 async function initializeShop() {
     try {
+        // Show loading spinner while fetching products (accessible)
+        if (gallery) {
+            gallery.innerHTML = `
+              <div class="d-flex justify-content-center p-4" aria-label="Loading products">
+                <div class="spinner-border text-danger" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>`;
+        }
         // Fetching data from the new JSON path
         const response = await fetch('../data/inventory.json'); 
         
@@ -183,17 +192,28 @@ function addToCart(name, image, price) {
   showAddToCartPopup(name);
 }
 
-function showAddToCartPopup(productName) {
+const showAddToCartPopup = (productName) => {
+  // Prefer Bootstrap toast via helper; fallback to legacy popup to avoid breaking behavior
+  if (window.bubbistixUI && typeof window.bubbistixUI.showToast === 'function') {
+    window.bubbistixUI.showToast({
+      title: 'Added to Cart',
+      message: `${productName} has been added to your cart!`,
+      autohide: true,
+      delay: 3000,
+      position: 'top-right'
+    });
+    return;
+  }
+
+  // Legacy popup fallback
   const popup = document.getElementById('add-to-cart-popup');
   const popupText = document.getElementById('popup-text');
-  popupText.textContent = productName + ' has been added to your cart!';
+  popupText.textContent = `${productName} has been added to your cart!`;
   popup.style.display = 'flex';
-  
-  // Auto close after 3 seconds
   setTimeout(() => {
     closeAddToCartPopup();
   }, 3000);
-}
+};
 
 function closeAddToCartPopup() {
   const popup = document.getElementById('add-to-cart-popup');

@@ -1002,6 +1002,12 @@ button:hover {
     font-weight: bold;
 }
 
+/* Bootstrap Toast Branding (non-invasive) */
+.bubbistix-toast-header .toast-title {
+    font-family: 'Cute-Sunrise', cursive;
+    color: #E6536D;
+}
+
 .tax-note {
     color: #666;
     font-size: 0.9rem;
@@ -2890,4 +2896,4 @@ footer {
         text-align: left !important;
         width: 100% !important;
     }
-} 
+}

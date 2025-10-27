@@ -1,8 +1,25 @@
 // Newsletter subscribe confirmation popup using existing success-popup styling
 
-document.addEventListener('DOMContentLoaded', function () {
+// Newsletter subscribe confirmation: Prefer Bootstrap toast, fallback to legacy popup
+document.addEventListener('DOMContentLoaded', () => {
   const subscribeForm = document.querySelector('.footer-subscribe form');
   if (!subscribeForm) return;
+
+  const canToast = !!(window.bubbistixUI && typeof window.bubbistixUI.showToast === 'function');
+
+  if (canToast) {
+    // Use accessible Bootstrap toast for unified feedback
+    subscribeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.bubbistixUI.showToast({
+        title: '🎉 You’re in!',
+        message: 'Thanks for joining our list — get ready for sweet deals, happy news, and maybe a little sparkle in your inbox soon! ✨💌',
+        autohide: true,
+        delay: 3000
+      });
+    });
+    return; // Skip legacy popup injection when toast is available
+  }
 
   // Determine correct image path depending on current page location
   const path = window.location.pathname.replace(/\\/g, '/');
@@ -10,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ? '../images/strawberry4.png'
     : 'docs/images/strawberry4.png';
 
-  // Inject popup markup once
+  // Fallback: Inject legacy popup markup once when Bootstrap toast is not available
   if (!document.getElementById('subscribePopup')) {
     const popup = document.createElement('div');
     popup.id = 'subscribePopup';
@@ -48,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const popupEl = document.getElementById('subscribePopup');
 
-  // Show popup on subscribe
-  subscribeForm.addEventListener('submit', function (e) {
+  // Fallback: Show legacy popup on subscribe
+  subscribeForm.addEventListener('submit', (e) => {
     e.preventDefault();
     popupEl.classList.remove('hidden');
     popupEl.style.display = 'flex';
@@ -57,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const okBtn = document.getElementById('subscribeOkBtn');
     if (okBtn) {
       okBtn.focus();
-      okBtn.addEventListener('click', function () {
+      okBtn.addEventListener('click', () => {
         popupEl.style.display = 'none';
         popupEl.classList.add('hidden');
       });

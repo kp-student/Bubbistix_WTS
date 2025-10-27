@@ -1,8 +1,11 @@
 // Contact success confirmation popup using existing success-popup styling
 
-document.addEventListener('DOMContentLoaded', function () {
+// Contact success: Prefer Bootstrap toast, fallback to legacy success popup
+document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.querySelector('section.contact form');
   if (!contactForm) return;
+
+  const canToast = !!(window.bubbistixUI && typeof window.bubbistixUI.showToast === 'function');
 
   // Determine correct image path depending on current page location
   const path = window.location.pathname.replace(/\\/g, '/');
@@ -48,20 +51,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const popupEl = document.getElementById('contactPopup');
 
-  // Show popup on successful submit
-  contactForm.addEventListener('submit', function (e) {
+  if (canToast) {
+    // Use toast for success feedback; keep focus accessible
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      contactForm.reset();
+      window.bubbistixUI.showToast({
+        title: '🎉 Message sent!',
+        message: 'Thanks for reaching out — your note is on its way to our inbox 💌',
+        autohide: true,
+        delay: 3000
+      });
+    });
+    return; // Skip legacy popup path when toast is available
+  }
+
+  // Fallback: Legacy popup behavior
+  contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Simulate success immediately and show popup
     popupEl.classList.remove('hidden');
     popupEl.style.display = 'flex';
-
-    // Optionally clear the form fields
     contactForm.reset();
 
     const okBtn = document.getElementById('contactOkBtn');
     if (okBtn) {
       okBtn.focus();
-      okBtn.addEventListener('click', function () {
+      okBtn.addEventListener('click', () => {
         popupEl.style.display = 'none';
         popupEl.classList.add('hidden');
       });
