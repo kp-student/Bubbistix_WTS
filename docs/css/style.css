@@ -174,6 +174,13 @@ header {
     transform: translateY(20px);
 }
 
+/*
+* DISCLOSURE: The core styling and effect for the .squishy-btn 
+* (including the multi-layered box-shadow effect) was adapted 
+* from an external CSS resource/tutorial found on codepen.io/havardob.
+* We're thankful to the original creator for sharing this design!
+*/
+
 /* SQUISHY BUTTON */
 
 .squishy-btn {
@@ -292,7 +299,6 @@ header {
 /* ABOUT SECTION */
 
 .about, .shop-header {
-    padding: 3rem 2rem;
     background: white;
 }
 
@@ -333,7 +339,6 @@ header {
 /* TEAM AND PROMO SECTIONS */
 
 .team , .promo {
-    padding: 3rem 1rem;
     background: var(--primary-pink);
     text-align: center;
     color: white;
@@ -1594,6 +1599,7 @@ button:hover {
 .shop-content {
     flex: 1;
     padding: 20px;
+    margin-top: 15px;
 }
 
 .shop-toolbar {
@@ -2031,7 +2037,17 @@ footer {
         font-size: 1rem;
         margin-bottom: 1.5rem !important; 
     }
-    
+
+    .team {
+        padding-top: 2.5rem;       
+        padding-bottom: 2.5rem; 
+        margin-bottom: 0; 
+    }
+
+    .team-header, .team-member h3, .team-subtitle h2 {
+        text-align: center !important; 
+    }
+
     .cart-content {
         grid-template-columns: 1fr;
         gap: 2rem;
@@ -2491,9 +2507,10 @@ footer {
         margin-bottom: 0.5rem !important;
     }
     
-    .promo-subtitle {
+    .promo-subtitle, .team-subtitle {
         font-size: 1.75rem !important;
         margin-bottom: 0.25rem;
+        text-align: center !important;
     }
 
     .promo-container p {
@@ -2572,10 +2589,6 @@ footer {
     .section-title {
         font-size: 1.1rem;
         margin-bottom: 10px;
-        text-align: left !important;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
         text-align: left !important;
     }
     
@@ -2821,10 +2834,6 @@ footer {
     .section-title {
         text-align: left !important;
         margin-bottom: 8px !important;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-        text-align: left !important;
     }
     
     .confirmation-title, .section-title, .delivery-section h2, .payment-section h2, .order-summary h3 {

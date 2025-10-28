@@ -214,6 +214,7 @@ Want to make Bubbistix even better? We’d love that!
 * This is a **front-end only** project.
 * No database, authentication, or payment APIs are used.
 * “Add to Cart” and “Checkout” are **UI mockups** that demonstrate the flow visually.
+* **Squishy Button Source** The unique styling for the Squishy Button (`.squishy-btn`) was adapted from an external resource by **codepen.io/havardob**. This technique is acknowledged in the `style.css` file.
 
 ---
 
